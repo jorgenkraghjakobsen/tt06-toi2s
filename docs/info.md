@@ -9,12 +9,15 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+SPDIF audio is a well known and commonly used industri standart for audio distibution on a single optical or electical interface it embed both the audio data and the clock in the same signal.
+I2S is a well known and commenly used industri standart for audio distibution on a single interface
+it seperates clock signal, audio pcm date and a left and right channel signal
+Digial audio amplifiers and DAC's often use I2S as input interface.Explain how your project works
 
 ## How to test
 
-Explain how to use your project
+If no smolke coming out after supply has been applied all good :-)
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+Amplifier module MA12070p :-)
