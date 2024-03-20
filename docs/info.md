@@ -16,7 +16,7 @@ Digial audio amplifiers and DAC's often use I2S as input interface.Explain how y
 
 ## How to test
 
-If no smolke coming out after supply has been applied all good :-)
+If no smoke coming out after supply has been applied all good :-)
 
 ## External hardware
 

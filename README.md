@@ -2,7 +2,9 @@
 
 # Tiny Tapeout Verilog Project Template
 
-- [Read the documentation for project](docs/info.md)
+- My doc tbd
+
+
 
 ## What is Tiny Tapeout?
 
