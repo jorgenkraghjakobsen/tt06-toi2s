@@ -167,7 +167,7 @@
                FOUND_SYNC_W2_ST   = 4'b1011,
                FOUND_SYNC_M_ST    = 4'b1100,
                FOUND_SYNC_M1_ST   = 4'b1101,
-               FOUND_SYNC_M2_ST   = 4'b1110;
+               FOUND_SYNC_M2_ST   = 4'b1111;
   
     reg  state_det;
     reg  next_det ;
