@@ -1,0 +1,122 @@
+// Register database generic build system
+{
+  "registers": [
+    {
+      "symbol"      : "sys_cfg.enable_stuf",
+      "address"     : "0x00",
+      "pos"         : "0",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "Enable stuf"
+    },
+    {
+      "symbol"      : "sys_cfg.enable_other",
+      "address"     : "0x00",
+      "pos"         : "1",
+      "size"        : "1",
+      "reset"       : "1",
+      "readonly"    : "0",
+      "description" : "Enable other stuf"
+    },
+    {
+      "symbol"      : "sys_cfg.monitor_flag",
+      "address"     : "0x00",
+      "pos"         : "2",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "1",
+      "description" : "Monitor internal flag"
+    },
+    {
+      "symbol"      : "sys_cfg.pwm_duty",
+      "address"     : "0x01",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "133",
+      "readonly"    : "0",
+      "description" : "Counter value for pwm"
+    },
+    {
+      "symbol"      : "sys_cfg.debug_led",
+      "address"     : "0x02",
+      "pos"         : "0",
+      "size"        : "6",
+      "reset"       : "85",
+      "readonly"    : "0",
+      "description" : "Debug led signals"
+    },
+    {
+      "symbol"      : "dsp_cfg.bypass_enable",
+      "address"     : "0x40",
+      "pos"         : "0",
+      "size"        : "1",
+      "reset"       : "1",
+      "readonly"    : "0",
+      "description" : "Bypass filters on the DSP"
+    },
+    {
+      "symbol"      : "dsp_cfg.dc_filter_enable",
+      "address"     : "0x40",
+      "pos"         : "1",
+      "size"        : "1",
+      "reset"       : "1",
+      "readonly"    : "0",
+      "description" : "Bypass DC filter on the DSP"
+    },
+    {
+      "symbol"      : "dsp_cfg.bp_filter_enable",
+      "address"     : "0x40",
+      "pos"         : "2",
+      "size"        : "1",
+      "reset"       : "1",
+      "readonly"    : "0",
+      "description" : "Bypass bandpass filter on the DSP"
+    },
+    {
+      "symbol"      : "dsp_cfg.dec_filter_enable",
+      "address"     : "0x40",
+      "pos"         : "3",
+      "size"        : "1",
+      "reset"       : "1",
+      "readonly"    : "0",
+      "description" : "Bypass decimation filter on the DSP"
+    },
+    {
+      "symbol"      : "dsp_cfg.pli_filter_enable",
+      "address"     : "0x40",
+      "pos"         : "4",
+      "size"        : "1",
+      "reset"       : "1",
+      "readonly"    : "0",
+      "description" : "Bypass PLI filter on the DSP"
+    },
+    {
+      "symbol"      : "dsp_cfg.placeholder1",
+      "address"     : "0x40",
+      "pos"         : "5",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "placeholder"
+    },
+    {
+      "symbol"      : "dsp_cfg.placeholder2",
+      "address"     : "0x40",
+      "pos"         : "6",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "placeholder"
+    },
+    {
+      "symbol"      : "dsp_cfg.placeholder3",
+      "address"     : "0x40",
+      "pos"         : "7",
+      "size"        : "1",
+      "reset"       : "0",
+      "readonly"    : "0",
+      "description" : "placeholder"
+    }
+  ]
+}

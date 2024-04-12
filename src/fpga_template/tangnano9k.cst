@@ -1,0 +1,38 @@
+IO_LOC  "pwm_out" 35;
+IO_PORT "pwm_out" IO_TYPE=LVCMOS33;
+
+IO_LOC  "i2c_scl" 25;
+IO_PORT "i2c_scl" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+IO_LOC  "i2c_sda" 26;
+IO_PORT "i2c_sda" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+IO_LOC  "debug_led_pin[0]" 10;
+IO_PORT "debug_led_pin[0]" DRIVE=8 IO_TYPE=LVCMOS18;
+
+IO_LOC  "debug_led_pin[1]" 11;
+IO_PORT "debug_led_pin[1]" DRIVE=8 IO_TYPE=LVCMOS18;
+
+IO_LOC  "debug_led_pin[2]" 13;
+IO_PORT "debug_led_pin[2]" DRIVE=8 IO_TYPE=LVCMOS18;
+
+IO_LOC  "debug_led_pin[3]" 14;
+IO_PORT "debug_led_pin[3]" DRIVE=8 IO_TYPE=LVCMOS18;
+
+IO_LOC  "debug_led_pin[4]" 15;
+IO_PORT "debug_led_pin[4]" DRIVE=8 IO_TYPE=LVCMOS18;
+
+IO_LOC  "debug_led_pin[5]" 16;
+IO_PORT "debug_led_pin[5]" DRIVE=8 IO_TYPE=LVCMOS18;
+
+IO_LOC  "btn_s1_reset" 3;
+IO_PORT "btn_s1_reset" IO_TYPE=LVCMOS18;
+
+IO_LOC  "btn_s2" 4;
+IO_PORT "btn_s2" IO_TYPE=LVCMOS18;
+
+IO_LOC  "gnd0" 33;
+IO_PORT "gnd0" DRIVE=24 IO_TYPE=LVCMOS33;
+
+IO_LOC  "clk" 52;
+IO_PORT "clk" IO_TYPE=LVCMOS33 PULL_MODE=UP;

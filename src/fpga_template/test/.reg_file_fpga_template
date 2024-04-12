@@ -1,0 +1,14 @@
+// Register database generic build system
+sys_cfg.enable_stuf 0x00 0 1 0 Enable stuf
+sys_cfg.enable_other 0x00 1 1 1 Enable other stuf
+sys_cfg.monitor_flag 0x00 2 1 0 Monitor internal flag
+sys_cfg.pwm_duty 0x01 0 8 133 Counter value for pwm
+sys_cfg.debug_led 0x02 0 6 85 Debug led signals
+dsp_cfg.bypass_enable 0x40 0 1 1 Bypass filters on the DSP
+dsp_cfg.dc_filter_enable 0x40 1 1 1 Bypass DC filter on the DSP
+dsp_cfg.bp_filter_enable 0x40 2 1 1 Bypass bandpass filter on the DSP
+dsp_cfg.dec_filter_enable 0x40 3 1 1 Bypass decimation filter on the DSP
+dsp_cfg.pli_filter_enable 0x40 4 1 1 Bypass PLI filter on the DSP
+dsp_cfg.placeholder1 0x40 5 1 0 placeholder
+dsp_cfg.placeholder2 0x40 6 1 0 placeholder
+dsp_cfg.placeholder3 0x40 7 1 0 placeholder

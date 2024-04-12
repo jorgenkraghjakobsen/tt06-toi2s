@@ -5,7 +5,7 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = spdif_decoder.v tt_um_jorgenkraghjakobsen_toi2s.v
+PROJECT_SOURCES = spdif_decoder/spdif_decoder.v tt_um_jorgenkraghjakobsen_toi2s.v
 
 ifneq ($(GATES),yes)
 
