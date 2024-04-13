@@ -2,11 +2,11 @@
 # Handling sv2v conversion out of the TT build script 
 
 BOARD 		= tangnano9k
-BOARD_DIR	= toi2s_top/tangnano9k
+BOARD_DIR	= toi2s_tt_fpga/tangnano9k
 FAMILY		= GW1N-9C
 DEVICE		= GW1NR-LV9QN88PC6/I5
 
-PRO=toi2s_top
+PRO=toi2s_tt_fpga
 
 WS 			= $(shell cd ../.. ; pwd )
 OBJ 		= $(WS)/obj/$(PRO)

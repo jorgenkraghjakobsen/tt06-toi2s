@@ -75,11 +75,11 @@ module toi2s_tt_top (
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:63:1
 	wire [1:0] rb_streamSt_mon;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:65:1
-	wire i2c_sda;
 	i2c_if i2c_inst(
 		.clk(clk),
 		.resetb(resetb),
-		.sda(i2c_sda),
+		.sdaIn(i2c_sdai),
+		.sdaOut(i2c_sdao),
 		.scl(i2c_scl),
 		.address(rb_address),
 		.data_write_to_reg(rb_data_write_to_reg),
@@ -88,7 +88,7 @@ module toi2s_tt_top (
 		.write_en(rb_write_en),
 		.streamSt_mon(rb_streamSt_mon)
 	);
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:80:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:81:1
 	rb_toi2s rb_toi2s_inst(
 		.clk(clk),
 		.resetb(resetb),
@@ -98,7 +98,7 @@ module toi2s_tt_top (
 		.write_en(rb_write_en),
 		.sys_cfg(sys_cfg)
 	);
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:93:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:94:1
 	pwm pwm_inst(
 		.clock_in(clk),
 		.reset(!resetb),
