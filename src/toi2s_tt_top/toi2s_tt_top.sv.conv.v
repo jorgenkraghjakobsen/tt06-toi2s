@@ -9,9 +9,9 @@ module toi2s_tt_top (
 	i2c_sdai,
 	i2c_sdao,
 	rx_in,
-	i2s_bck,
-	i2s_ws,
-	i2s_d0,
+	amp_i2s_bck,
+	amp_i2s_ws,
+	amp_i2s_d0,
 	amp_i2c_scl,
 	amp_i2c_sdai,
 	amp_i2c_sdao,
@@ -36,11 +36,11 @@ module toi2s_tt_top (
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:18:5
 	input rx_in;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:21:5
-	output wire i2s_bck;
+	output wire amp_i2s_bck;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:22:5
-	output wire i2s_ws;
+	output wire amp_i2s_ws;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:23:5
-	output wire i2s_d0;
+	output wire amp_i2s_d0;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:25:5
 	output wire amp_i2c_scl;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:26:5
