@@ -30,16 +30,16 @@ module tt_um_jorgenkraghjakobsen_toi2s (
     .i2c_sdai(i2c_sdai),
     .i2c_sdao(i2c_sdao),
     
-    .i2s_bck(i2s_bck),
-    .i2s_ws(i2s_ws),
-    .i2s_d0(i2s_d0),
+    .amp_i2s_bck(amp_i2s_bck),
+    .amp_i2s_ws(amp_i2s_ws),
+    .amp_i2s_d0(amp_i2s_d0),
     
     .amp_i2c_scl(amp_i2c_scl),        // amp i2c clk control  (master ->  amp (slave))
     .amp_i2c_sdai(amp_i2c_sdai),      // amp i2c data control (master)
     .amp_i2c_sdao(amp_i2c_sdao),      // amp i2c data control (master)
     
     .amp_nenable(amp_nenable),        // amp nenable
-    .amp_mute(amp_mute),              / / amp mute      
+    .amp_mute(amp_mute),              // amp mute      
 
     .pwm_out(pwm_out),
     .rx_in(rx_in) 

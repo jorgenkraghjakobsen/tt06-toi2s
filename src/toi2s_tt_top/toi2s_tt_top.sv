@@ -18,9 +18,9 @@ module toi2s_tt_top
     input   rx_in,              // Audio input spdif blinking ligth  (pin 38) 
     
     //---AMPLIFIER-----
-    output  i2s_bck,            // Clock
-    output  i2s_ws,             // Sync Left/Rigth
-    output  i2s_d0,             // Data 
+    output  amp_i2s_bck,            // Clock
+    output  amp_i2s_ws,             // Sync Left/Rigth
+    output  amp_i2s_d0,             // Data 
     
     output  amp_i2c_scl,         // amp i2c clk control  (master ->  amp (slave))
     input   amp_i2c_sdai,       // amp i2c data control (master)
