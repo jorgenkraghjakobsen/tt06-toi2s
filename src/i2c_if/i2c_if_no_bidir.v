@@ -47,7 +47,8 @@
 module i2c_if (
   input clk,
   input resetb,
-  inout sda,
+  input sdaIn,                // Moving bidir to higher level 
+  output sdaOut,
   input scl,
   output [7:0] address,
   output [7:0] data_write_to_reg,
@@ -68,8 +69,8 @@ reg [`SCL_DEL_LEN-1:0] sclDelayed;
 reg [`SDA_DEL_LEN-1:0] sdaDelayed;
 reg [1:0] startStopDetState;
 wire clearStartStopDet;
-wire sdaOut;
-wire sdaIn;
+//wire sdaOut;
+//wire sdaIn;
 wire [7:0] regAddr;
 wire [7:0] dataToRegIF;
 wire writeEn;
@@ -78,8 +79,9 @@ reg [1:0] rstPipe;
 wire rstSyncToClk;
 reg startEdgeDet;
  
-assign sda = (sdaOut == 1'b0) ? 1'b0 : 1'bz;
-assign sdaIn = sda;
+// Moving i2c bidir logit to higher level 
+//assign sda = (sdaOut == 1'b0) ? 1'b0 : 1'bz;
+//assign sdaIn = sda;
  
 // sync rst rsing edge to clk
 always @(posedge clk) begin

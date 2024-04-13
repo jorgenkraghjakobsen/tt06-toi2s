@@ -1,19 +1,34 @@
-// Boiler plate for a midsize fpga project 
+// toI2S tinytapeout top  
 // 
 
 import toi2s_pkg::*; 
 
-module toi2s_top
+module toi2s_tt_top
     ( 
     input   clk,
-    input   reset,              // on Tangnano9k  // Button 1 input  (pin 3)
+    input   resetb,              // on Tangnano9k  // Button 1 input  (pin 3)
     //---I2C-----------   
-    input   i2c_scl,            // FTDI serial USB_I2C // ( pin 25 )  
-    inout   i2c_sda,            // FTDI serial USB_I2c // ( pin 26 )   
+    input   i2c_scl,            // FTDI serial USB_I2C // ( pin 25 ) (slave)  
+    
+    input   i2c_sdai,           // FTDI serial USB_I2c // ( pin 26 ) (slave)  
+    output  i2c_sdao,           // bidirectional io handled at higher level
+    output  i2c_sdaoe,          // implemeeted in fpga top and on TT downtream flow
+    
     //---SPDIF---------  
     input   rxin,               // Audio input spdif blinking ligth  (pin 38) 
+    //---AMPLIFIER-----
+    output  i2s_bck,            // Clock
+    output  i2s_ws,             // Sync Left/Rigth
+    output  i2s_d0,             // Data 
+    output  amp_i2c_scl         // amp i2c clk control  (master ->  amp (slave))
+    input   amp_i2c_sdai,       // amp i2c data control (master)
+    output  amp_i2c_sdao,       // amp i2c data control (master)
+    output  amp_i2c_sdaoe,       // amp i2c data control (master)
+    output  amp_nenable,        // amp nenable
+    output  amp_mute,           // amp mute      
+    
     //---PWM-----------
-    output pwm_out,             // Debug output pwm signal  (pin 35)
+    output  pwm_out,             // Debug output pwm signal  (pin 35)
     
     //---Debug---------
     output  [5:0] debug_out,    // Debug out signals  
@@ -26,8 +41,7 @@ assign debug_out = sys_cfg.debug_led;
 // Clock and reset   
 //-------------------------------------------------------------------------------------------------------- 
 
-wire resetb; 
-assign resetb = reset; 
+
 
 // Direct clock insert PLL here when needed
 

@@ -21,7 +21,7 @@ project:
     - "amp_frontend/amp_state_control.v"
     - "amp_frontend/clk_div.v"
     - "amp_frontend/timer_simple.v"
-    - "i2c_if/i2c_if.v"
+    - "i2c_if/i2c_if_no_bidir.v"
     - "i2c_if/i2cSlave_define.v"
     - "i2c_if/serialInterface.v"
     - "i2c_if/timescale.v"
@@ -35,9 +35,9 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: "rx_in"
-  ui[1]: "clk"
-  ui[2]: "resetb"
+  ui[0]: "clk"
+  ui[1]: "resetb"
+  ui[2]: "rx_in"
   ui[3]: ""
   ui[4]: ""
   ui[5]: ""
@@ -48,15 +48,15 @@ pinout:
   uo[0]: "i2s_do"
   uo[1]: "i2s_bck"
   uo[2]: "i2s_lr"
-  uo[3]: "i2c_sda"
-  uo[4]: "i2c_scl"
+  uo[3]: "nenable"
+  uo[4]: "mute"
   uo[5]: ""
   uo[6]: ""
-  uo[7]: ""
+  uo[7]: "pwm_out"
 
   # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
+  uio[0]: "i2c_scl"
+  uio[1]: "i2c_sda"
   uio[2]: ""
   uio[3]: ""
   uio[4]: ""
