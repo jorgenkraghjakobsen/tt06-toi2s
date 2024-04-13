@@ -46,6 +46,10 @@ module tt_um_jorgenkraghjakobsen_toi2s (
     ); 
 
 
+    assign 
+ 
+
+
   // spdif_decoder spdif_decoder(
   //   .clk_in(clk),
   //   .resetb(rst_n),
@@ -62,11 +66,11 @@ module tt_um_jorgenkraghjakobsen_toi2s (
   
   // Dedicated outputs 
 
-  assign uo_out[0] = 1'b1;    // nenable
-  assign uo_out[1] = 1'b1;    // mute 
-  assign uo_out[2] = 1'b0;    // i2s_bck 
-  assign uo_out[3] = 1'b1;    // i2s_ws
-  assign uo_out[4] = 1'b1;    // i2s_d0p
+  assign uo_out[0] = amp_nenable1;    // nenable
+  assign uo_out[1] = amp_mute;    // mute 
+  assign uo_out[2] = amp_i2s_bck;    // i2s_bck 
+  assign uo_out[3] = amp_i2s_ws;    // i2s_ws
+  assign uo_out[4] = amp_i2s_d0;    // i2s_d0
   assign uo_out[5] = 1'b0;    // free 
   assign uo_out[6] = 1'b0;    // free 
   assign uo_out[7] = pwm_out; // 
