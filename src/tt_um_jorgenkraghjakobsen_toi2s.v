@@ -18,8 +18,8 @@ module tt_um_jorgenkraghjakobsen_toi2s (
 
   // All output pins must be assigned. If not used, assign to 0.
   //assign uo_out[7:5]  = 3'b000;
-  assign uio_out[7:2] = 7'b0000_000;
-  assign uio_oe[7:2]  = 7'b0000_000;
+  assign uio_out[7:4] = 4'b0000;
+  assign uio_oe[7:4]  = 4'b0000;
  
   toi2s_tt_top tt_top_inst ( 
     .clk(clk),
@@ -72,6 +72,15 @@ module tt_um_jorgenkraghjakobsen_toi2s (
   assign uo_out[7] = pwm_out; // 
 
   // Bidirectional input / output 
+
+  assign amp_i2c_sdai = uio_in[3]; 
+  assign uio_oe[3]  = (amp_i2c_sdao == 1'b0) ? 1'b1 : 1'b0;
+  assign uio_out[3] = amp_i2c_sdao; 
+  
+  //assign amp_i2c_scl= uio_in[2];
+  assign uio_oe[2]  = 1'b1;
+  assign uio_out[2] = amp_i2c_scl; 
+
 
   assign i2c_sdai   = uio_in[1];
   assign uio_oe[1]  = (i2c_sdao == 1'b0) ? 1'b1 : 1'b0;
