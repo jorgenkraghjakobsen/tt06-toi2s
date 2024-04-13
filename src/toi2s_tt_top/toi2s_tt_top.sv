@@ -20,7 +20,7 @@ module toi2s_tt_top
     output  i2s_bck,            // Clock
     output  i2s_ws,             // Sync Left/Rigth
     output  i2s_d0,             // Data 
-    output  amp_i2c_scl         // amp i2c clk control  (master ->  amp (slave))
+    output  amp_i2c_scl,         // amp i2c clk control  (master ->  amp (slave))
     input   amp_i2c_sdai,       // amp i2c data control (master)
     output  amp_i2c_sdao,       // amp i2c data control (master)
     output  amp_i2c_sdaoe,       // amp i2c data control (master)

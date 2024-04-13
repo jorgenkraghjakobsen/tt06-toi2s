@@ -16,7 +16,7 @@ module toi2s_tt_fpga
     output  i2s_bck,            // Clock
     output  i2s_ws,             // Sync Left/Rigth
     output  i2s_d0,             // Data 
-    output  amp_i2c_scl         // amp i2c clk control  (master ->  amp (slave))
+    output  amp_i2c_scl,         // amp i2c clk control  (master ->  amp (slave))
     inout   amp_i2c_sda,        // amp i2c data control (master)
     output  amp_nenable,        // amp nenable
     output  amp_mute,           // amp mute      

@@ -21,7 +21,7 @@ $(OBJ):
 
 SRC_LIST = \
 src/pwm/pwm.v \
-src/i2c_if/i2c_if.v \
+src/i2c_if/i2c_if_no_bidir.v \
 src/i2c_if/i2cSlave_define.v \
 src/i2c_if/serialInterface.v \
 src/i2c_if/timescale.v \
