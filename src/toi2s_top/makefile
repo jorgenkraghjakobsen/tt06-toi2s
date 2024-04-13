@@ -1,15 +1,18 @@
+# Makescript from fpga_template - Addapted for TT06_toi2a project 
+# Handling sv2v conversion out of the TT build script 
+
 BOARD 		= tangnano9k
-BOARD_DIR	= fpga_template/tangnano9k
+BOARD_DIR	= toi2s_top/tangnano9k
 FAMILY		= GW1N-9C
 DEVICE		= GW1NR-LV9QN88PC6/I5
 
-PRO=fpga_template_top
+PRO=toi2s_top
 
 WS 			= $(shell cd ../.. ; pwd )
 OBJ 		= $(WS)/obj/$(PRO)
 
-SRC_INC 	= $(WS)/digital
-PKG 		= $(WS)/digital/rb_fpga_template/rb_fpga_template_struct.svh
+SRC_INC 	= $(WS)/src
+PKG 		= $(WS)/src/rb_toi2s/rb_toi2s_struct.svh
 
 .PHONY: $(OBJ)
 # Create Object build dir
@@ -17,13 +20,13 @@ $(OBJ):
 	mkdir -p $@
 
 SRC_LIST = \
-digital/pwm/pwm.v \
-digital/i2c_if/i2c_if.v \
-digital/i2c_if/i2cSlave_define.v \
-digital/i2c_if/serialInterface.v \
-digital/i2c_if/timescale.v \
-digital/rb_fpga_template/rb_fpga_template.sv \
-digital/fpga_template/fpga_template.sv
+src/pwm/pwm.v \
+src/i2c_if/i2c_if.v \
+src/i2c_if/i2cSlave_define.v \
+src/i2c_if/serialInterface.v \
+src/i2c_if/timescale.v \
+src/rb_toi2s/rb_toi2s.sv \
+src/toi2s_top/toi2s_top.sv
 
 
 SRC = $(addprefix $(WS)/, $(SRC_LIST) )
@@ -31,8 +34,8 @@ SRC_SV = $(filter %.sv ,$(SRC))
 SRC_V  = $(filter %.v ,$(SRC))
 SRC_CONV = $(addsuffix .conv.v,$(SRC_SV))
 
-$(WS)/digital/rb_fpga_template/rb_fpga_template.sv: $(WS)/digital/rb_fpga_template/register_bank.go 
-	cd ../rb_fpga_template ;\
+$(WS)/src/rb_toi2s/rb_toi2s.sv: $(WS)/src/rb_toi2s/register_bank.go 
+	cd ../rb_toi2s ;\
 	make 
 
 test:
@@ -59,7 +62,7 @@ $(OBJ)/$(PRO).json: conv2v $(OBJ) $(SRC)
 $(OBJ)/$(PRO)_pnr.json: $(OBJ)/$(PRO).json
 	cd $(OBJ) ;\
 	nextpnr-himbaechel --json $(PRO).json --write $(PRO)_pnr.json \
-	--device ${DEVICE} --vopt family=${FAMILY} --vopt cst=$(WS)/digital/$(BOARD_DIR).cst
+	--device ${DEVICE} --vopt family=${FAMILY} --vopt cst=$(WS)/src/$(BOARD_DIR).cst
 
 
 $(OBJ)/$(PRO).fs: $(OBJ)/$(PRO)_pnr.json

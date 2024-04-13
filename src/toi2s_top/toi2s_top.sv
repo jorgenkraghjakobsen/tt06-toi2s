@@ -6,18 +6,18 @@ import toi2s_pkg::*;
 module toi2s_top
     ( 
     input   clk,
-    input   reset,              // on Tangnano9k  // Button 1 input  (pin )
+    input   reset,              // on Tangnano9k  // Button 1 input  (pin 3)
     //---I2C-----------   
     input   i2c_scl,            // FTDI serial USB_I2C // ( pin 25 )  
     inout   i2c_sda,            // FTDI serial USB_I2c // ( pin 26 )   
     //---SPDIF---------  
-    input   rxin,               // Audio input spdif blinking ligth  
+    input   rxin,               // Audio input spdif blinking ligth  (pin 38) 
     //---PWM-----------
-    output pwm_out,             // Debug output pwm signal  (pin )
+    output pwm_out,             // Debug output pwm signal  (pin 35)
     
     //---Debug---------
     output  [5:0] debug_out,    // Debug out signals  
-    input   debug_in           // Was btn_s2,             // Button 2 input   
+    input   debug_in           // Was btn_s2,             // Button 2 input (pin 4)   
     );
     
 assign debug_out = sys_cfg.debug_led;
