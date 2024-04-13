@@ -3,7 +3,7 @@
 // Written by Jørgen Kragh Jakobsen, All right reserved 
 //-----------------------------------------------------------------------------
 //`include "rb_toi2s_struct.svh"
-//import toi2s_pkg::*;
+import toi2s_pkg::*;
 
 package toi2s_pkg;// Wire interface for sys_cfg
 typedef struct packed {
@@ -28,6 +28,9 @@ typedef struct packed {
 
 
 endpackage
+
+import toi2s_pkg::*;
+
 
 module rb_toi2s
 #(parameter ADR_BITS = 8
