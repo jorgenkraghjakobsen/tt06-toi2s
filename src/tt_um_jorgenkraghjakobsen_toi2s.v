@@ -20,19 +20,30 @@ module tt_um_jorgenkraghjakobsen_toi2s (
   //assign uo_out[7:5]  = 3'b000;
   assign uio_out[7:2] = 7'b0000_000;
   assign uio_oe[7:2]  = 7'b0000_000;
-  
-  wire audio_locked;
-  wire edge_detect;
-
+ 
   toi2s_tt_top tt_top_inst ( 
     .clk(clk),
-    .reset(rst_n),
-    .i2c_scl(uio_in[0]),
-    .i2c_sdai(uio_in[1]),
-    .i2c_sdao(uio_out[1]),
-    .i2c_sdaeo(uio_oe[1]),
-    .pwm_out(pwm_out)
-   ); 
+    .resetb(rst_n),
+    .ena(ena),
+
+    .i2c_scl(i2c_scl),
+    .i2c_sdai(i2c_sdai),
+    .i2c_sdao(i2c_sdao),
+    
+    .i2s_bck(i2s_bck),
+    .i2s_ws(i2s_ws),
+    .i2s_d0(i2s_d0),
+    
+    .amp_i2c_scl(amp_i2c_scl),        // amp i2c clk control  (master ->  amp (slave))
+    .amp_i2c_sdai(amp_i2c_sdai),      // amp i2c data control (master)
+    .amp_i2c_sdao(amp_i2c_sdao),      // amp i2c data control (master)
+    
+    .amp_nenable(amp_nenable),        // amp nenable
+    .amp_mute(amp_mute),              / / amp mute      
+
+    .pwm_out(pwm_out),
+    .rx_in(rx_in) 
+    ); 
 
 
   // spdif_decoder spdif_decoder(
@@ -45,14 +56,28 @@ module tt_um_jorgenkraghjakobsen_toi2s (
   //   .audio_locked(audio_locked),
   //   .edgedetect(edge_detect));
   
-  assign uo_out[0] = 1'b1;    // placeholder i2c_sda
-  assign uo_out[1] = 1'b1;    // placeholder i2c_scl
-  assign uo_out[2] = 1'b0;    // nenable_out
-  assign uo_out[3] = 1'b1;    // placeholder i2c_sda
-  assign uo_out[4] = 1'b1;    // placeholder i2c_scl
-  assign uo_out[5] = 1'b0;    // nenable_out
-  assign uo_out[6] = 1'b0;    // nmute_out
-  assign uo_out[7] = pwm_out;    // rx_out
+    // Dedicated input 
+  assign rx_in      = ui_in[0];   
+ 
+  
+  // Dedicated outputs 
 
+  assign uo_out[0] = 1'b1;    // nenable
+  assign uo_out[1] = 1'b1;    // mute 
+  assign uo_out[2] = 1'b0;    // i2s_bck 
+  assign uo_out[3] = 1'b1;    // i2s_ws
+  assign uo_out[4] = 1'b1;    // i2s_d0p
+  assign uo_out[5] = 1'b0;    // free 
+  assign uo_out[6] = 1'b0;    // free 
+  assign uo_out[7] = pwm_out; // 
 
+  // Bidirectional input / output 
+
+  assign i2c_sdai   = uio_in[1];
+  assign uio_oe[1]  = (i2c_sdao == 1'b0) ? 1'b1 : 1'b0;
+  assign uio_out[1] = i2c_sdao; 
+
+  assign i2c_scl    = uio_in[0];
+  assign uio_oe[0]  = 1'b0;
+  assign uio_out[0] = 1'b0; 
 endmodule
