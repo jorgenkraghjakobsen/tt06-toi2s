@@ -29,7 +29,7 @@ project:
     - "spdif_decoder/spdif_decoder.v"
     - "rb_toi2s/rb_toi2s_struct.svh"
     - "rb_toi2s/rb_toi2s.sv.conv.v"
-    - "toi2s_top/toi2s_top.sv.conv.v"         
+    - "toi2s_tt_top/toi2s_tt_top.sv.conv.v"         
     - "tt_um_jorgenkraghjakobsen_toi2s.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
