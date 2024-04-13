@@ -83,7 +83,7 @@ func main() {
 	}
 
 	// create a array of array of symbols
-	regmap := RegMap{"fpga_template", 0x000001, 8, 0, sec}
+	regmap := RegMap{"toi2s", 0x000001, 8, 0, sec}
 
 	writeHDLIncludeStructFile(regmap)
 

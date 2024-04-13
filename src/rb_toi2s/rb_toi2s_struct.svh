@@ -2,10 +2,10 @@
 // Interface structures for registerbank symbol access
 
 
-//`ifndef _fpga_template_
-//  `define _fpga_template_
+//`ifndef _toi2s_
+//  `define _toi2s_
 
-package fpga_template_pkg;// Wire interface for sys_cfg
+package toi2s_pkg;// Wire interface for sys_cfg
 typedef struct packed {
   logic       enable_stuf;                     // Enable stuf
   logic       enable_other;                    // Enable other stuf

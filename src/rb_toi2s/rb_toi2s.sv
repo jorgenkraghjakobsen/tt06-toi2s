@@ -1,11 +1,11 @@
 // Register bank 
-// Auto generated code from fpga_template version 1 
+// Auto generated code from toi2s version 1 
 // Written by Jørgen Kragh Jakobsen, All right reserved 
 //-----------------------------------------------------------------------------
-//`include "rb_fpga_template_struct.svh"
-import fpga_template_pkg::*;
+//`include "rb_toi2s_struct.svh"
+import toi2s_pkg::*;
 
-module rb_fpga_template
+module rb_toi2s
 #(parameter ADR_BITS = 8
  )
 (

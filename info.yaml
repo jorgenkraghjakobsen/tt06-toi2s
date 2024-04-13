@@ -15,12 +15,20 @@ project:
   
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
   source_files:
+    - "amp_frontend/amp_frontend.v"
+    - "amp_frontend/amp_i2c_master.v"
+    - "amp_frontend/amp_i2s_interface.v"
+    - "amp_frontend/amp_state_control.v"
+    - "amp_frontend/clk_div.v"
+    - "amp_frontend/timer_simple.v"
     - "i2c_if/i2c_if.v"
     - "i2c_if/i2cSlave_define.v"
     - "i2c_if/serialInterface.v"
     - "i2c_if/timescale.v"
     - "pwm/pwm.v"
-    - "spdif_decoder/spdif_decoder.v"        
+    - "spdif_decoder/spdif_decoder.v"
+    - "rb_toi2s/rb_toi2s.sv"
+    - "toi2s_top/toi2s_top.sv"         
     - "tt_um_jorgenkraghjakobsen_toi2s.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.

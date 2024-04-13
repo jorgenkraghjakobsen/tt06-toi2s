@@ -1,33 +1,33 @@
 // Boiler plate for a midsize fpga project 
 // 
 
-import fpga_template_pkg::*; 
+import toi2s_pkg::*; 
 
-module fpga_template_top
+module toi2s_top
     ( 
-    input   clk, 
+    input   clk,
+    input   reset,              // on Tangnano9k  // Button 1 input  (pin )
     //---I2C-----------   
-    input   i2c_scl,    
-    inout   i2c_sda,
+    input   i2c_scl,            // FTDI serial USB_I2C // ( pin 25 )  
+    inout   i2c_sda,            // FTDI serial USB_I2c // ( pin 26 )   
+    //---SPDIF---------  
+    input   rxin,               // Audio input spdif blinking ligth  
     //---PWM-----------
-    output pwm_out, 
+    output pwm_out,             // Debug output pwm signal  (pin )
+    
     //---Debug---------
-    output  [5:0] debug_led_pin,
-    input   btn_s1_reset,     // Button 1 input   
-    input   btn_s2,           // Button 2 input   
-    //---More Ground---
-    output  gnd0            // Ground output with cranked up power 
+    output  [5:0] debug_out,    // Debug out signals  
+    input   debug_in           // Was btn_s2,             // Button 2 input   
     );
     
-assign gnd0 = 1'b0;
-assign debug_led_pin = sys_cfg.debug_led;
+assign debug_out = sys_cfg.debug_led;
 
 //--------------------------------------------------------------------------------------------------------
 // Clock and reset   
 //-------------------------------------------------------------------------------------------------------- 
 
 wire resetb; 
-assign resetb = btn_s1_reset; 
+assign resetb = reset; 
 
 // Direct clock insert PLL here when needed
 
@@ -61,7 +61,7 @@ i2c_if i2c_inst (
 //--------------------------------------------------------------------------------------------------------
 // Register bank        
 //-------------------------------------------------------------------------------------------------------- 
-rb_fpga_template rb_fpga_template_inst (
+rb_toi2s rb_toi2s_inst (
     .clk                (clk),
     .resetb             (resetb),
     .address            (rb_address),
@@ -84,5 +84,7 @@ pwm pwm_inst (
 //-------------------------------------------------------------------------------------------------------- 
 // Your block here                
 //-------------------------------------------------------------------------------------------------------- 
+
+
 
 endmodule
