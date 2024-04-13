@@ -46,8 +46,7 @@ module tt_um_jorgenkraghjakobsen_toi2s (
     ); 
 
 
-    assign 
- 
+    
 
 
   // spdif_decoder spdif_decoder(
@@ -60,13 +59,13 @@ module tt_um_jorgenkraghjakobsen_toi2s (
   //   .audio_locked(audio_locked),
   //   .edgedetect(edge_detect));
   
-    // Dedicated input 
+  // Dedicated input 
   assign rx_in      = ui_in[0];   
  
   
   // Dedicated outputs 
 
-  assign uo_out[0] = amp_nenable1;    // nenable
+  assign uo_out[0] = amp_nenable;    // nenable
   assign uo_out[1] = amp_mute;    // mute 
   assign uo_out[2] = amp_i2s_bck;    // i2s_bck 
   assign uo_out[3] = amp_i2s_ws;    // i2s_ws
