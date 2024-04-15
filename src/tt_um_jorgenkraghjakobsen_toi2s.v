@@ -33,8 +33,7 @@ module tt_um_jorgenkraghjakobsen_toi2s (
   wire amp_nmute;
   wire pwm_out;
   wire debug_in;
-  wire [5:0] debug_out;
-
+  
 
   toi2s_tt_top tt_top_inst ( 
     .clk(clk),                        //! TT harnest clock
