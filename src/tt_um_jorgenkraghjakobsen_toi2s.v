@@ -19,6 +19,22 @@ module tt_um_jorgenkraghjakobsen_toi2s (
   // All output pins must be assigned. If not used, assign to 0.
   
   wire [5:0] debug_out;
+  wire i2c_scl;
+  wire i2c_sdai;
+  wire i2c_sdao;
+  wire rx_in;
+  wire amp_i2s_bck;
+  wire amp_i2s_ws;
+  wire amp_i2s_d0;
+  wire amp_i2c_scl;
+  wire amp_i2c_sdai;
+  wire amp_i2c_sdao;
+  wire amp_nenable;
+  wire amp_nmute;
+  wire pwm_out;
+  wire debug_in;
+  wire [5:0] debug_out;
+
 
   toi2s_tt_top tt_top_inst ( 
     .clk(clk),                        //! TT harnest clock
