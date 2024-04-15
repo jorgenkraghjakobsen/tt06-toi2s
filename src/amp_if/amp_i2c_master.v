@@ -61,6 +61,7 @@ end
    clk_div #(.DIV(5)) div (clk_in,resetb,clk);
 
    wire [7:0] opcode; 
+
    reg [2:0] boot_index = 3'b000 , boot_next = 3'b000  ; 
    reg [3:0] state_reg  = 4'b0000, next_reg  = 4'b0000  ; 
    reg [5:0] i2c_cnt    = 6'b000000 , next_cnt = 6'b000000;
@@ -83,19 +84,19 @@ end
     begin
     if (!resetb) 
     begin
-      next_reg    <= INIT_ST; 
-      boot_next   <= 3'b000;
-      next_cnt     <= 6'b000000;
-      i2c_scl_next <= 0;
-      i2c_sda_next <= 0;
+      next_reg    = INIT_ST; 
+      boot_next   = 3'b000;
+      next_cnt     = 6'b000000;
+      i2c_scl_next = 0;
+      i2c_sda_next = 0;
      end
     else 
     begin 
-      state_reg   <= next_reg; 
-      i2c_cnt     <= next_cnt;
-      boot_index  <= boot_next; 
-      i2c_scl     <= i2c_scl_next; 
-      i2c_sda     <= i2c_sda_next; 
+      state_reg   = next_reg; 
+      i2c_cnt     = next_cnt;
+      boot_index  = boot_next; 
+      i2c_scl     = i2c_scl_next; 
+      i2c_sda     = i2c_sda_next; 
     end
    end
    
