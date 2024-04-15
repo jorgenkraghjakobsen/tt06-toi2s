@@ -27,7 +27,7 @@ module toi2s_tt_top
     output  amp_i2c_sdao,       // amp i2c data control (master)
     
     output  amp_nenable,        // amp nenable
-    output  amp_mute,           // amp mute      
+    output  amp_nmute,           // amp mute      
     
     //---PWM-----------
     output  pwm_out,             // Debug output pwm signal  (pin 35)
@@ -50,14 +50,22 @@ assign debug_out = sys_cfg.debug_led;
 //--------------------------------------------------------------------------------------------------------
 // Audio controller    
 //-------------------------------------------------------------------------------------------------------- 
-assign amp_i2s_bck  = 1'b0;
-assign amp_i2s_ws   = 1'b0;
-assign amp_i2s_d0   = 1'b0;
-assign amp_nenable  = 1'b0;
-assign amp_mute     = 1'b0;
-assign amp_i2c_scl  = 1'b0;
-assign amp_i2c_sdao = 1'b0;
+wire amp_debug_out;
 
+amp_if amp_if_inst(
+    .clk(clk),
+    .resetb(resetb),
+    .ena(ena),
+    .rx_in(rx_in),
+    .amp_nenable(amp_nenable),
+    .amp_nmute(amp_nmute),
+    .amp_i2s_bck(amp_i2s_bck),
+    .amp_i2s_ws(amp_i2s_d0),
+    .amp_i2c_scl(amp_i2c_scl),
+    .amp_i2c_sdai(amp_i2c_sdai),
+    .amp_i2c_sdao(amp_i2c_sdao),
+    .debug_out(amp_debug_out)
+    );
 //--------------------------------------------------------------------------------------------------------
 // Register bank structs  
 //-------------------------------------------------------------------------------------------------------- 

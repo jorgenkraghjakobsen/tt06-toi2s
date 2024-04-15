@@ -20,6 +20,13 @@ $(OBJ):
 	mkdir -p $@
 
 SRC_LIST = \
+src/amp_if/amp_if.v \
+src/amp_if/amp_i2c_master.v \
+src/amp_if/amp_i2s_interface.v \
+src/amp_if/amp_state_control.v \
+src/amp_if/clk_div.v \
+src/amp_if/timer_simple.v \
+src/spdif_decoder/spdif_decoder.v \
 src/pwm/pwm.v \
 src/i2c_if/i2c_if_no_bidir.v \
 src/i2c_if/i2cSlave_define.v \

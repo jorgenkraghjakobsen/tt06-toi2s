@@ -1,5 +1,5 @@
-IO_LOC  "amp_mute" 49;
-IO_PORT "amp_mute" IO_TYPE=LVCMOS33;
+IO_LOC  "amp_nmute" 49;
+IO_PORT "amp_nmute" IO_TYPE=LVCMOS33;
 
 IO_LOC  "amp_nenable" 48;
 IO_PORT "amp_nenable" IO_TYPE=LVCMOS33;

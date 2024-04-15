@@ -1,33 +1,32 @@
 # Tiny Tapeout project information
 project:
   title:        "SPDIF to I2S decoder"      # Project title
-  author:       "Jørgen Kragh Jakobsen"      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "Convert audio from SPDIF source to I2S format for ClassD amp MA12070p"      # One line description of what your project does
-  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  author:       "Jørgen Kragh Jakobsen"     # Your name
+  discord:      "jkj4212"                   # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "Convert audio from SPDIF to I2S format for ClassD amp MA12070p"      # One line description of what your project does
+  language:     "SystemVerilog"             # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     48000000  # Clock frequency in Hz (or 0 if not applicable)
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+  tiles: "1x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
   top_module:  "tt_um_jorgenkraghjakobsen_toi2s"
   
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
   source_files:
-    - "amp_frontend/amp_frontend.v"
-    - "amp_frontend/amp_i2c_master.v"
-    - "amp_frontend/amp_i2s_interface.v"
-    - "amp_frontend/amp_state_control.v"
-    - "amp_frontend/clk_div.v"
-    - "amp_frontend/timer_simple.v"
-    - "spdif_decoder/spdif_decoder.v"
+    - "amp_if/amp_if.v"
+    - "amp_if/amp_i2c_master.v"
+    - "amp_if/amp_i2s_interface.v"
+    - "amp_if/amp_state_control.v"
+    - "amp_if/clk_div.v"
+    - "amp_if/timer_simple.v"
+    - "amp_if/spdif_decoder.v"
     - "i2c_if/i2c_if_no_bidir.v"
     - "i2c_if/i2cSlave_define.v"
     - "i2c_if/serialInterface.v"
     - "i2c_if/timescale.v"
     - "pwm/pwm.v"
-    - "rb_toi2s/rb_toi2s_struct.svh"
     - "rb_toi2s/rb_toi2s.sv.conv.v"
     - "toi2s_tt_top/toi2s_tt_top.sv.conv.v"         
     - "tt_um_jorgenkraghjakobsen_toi2s.v"
@@ -35,9 +34,9 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: "clk"
-  ui[1]: "resetb"
-  ui[2]: "rx_in"
+  ui[0]: "rx_in"
+  ui[1]: ""
+  ui[2]: ""
   ui[3]: ""
   ui[4]: ""
   ui[5]: ""
@@ -45,11 +44,11 @@ pinout:
   ui[7]: ""
 
   # Outputs
-  uo[0]: "i2s_do"
-  uo[1]: "i2s_bck"
-  uo[2]: "i2s_lr"
-  uo[3]: "nenable"
-  uo[4]: "mute"
+  uo[0]: "amp_nenable"
+  uo[1]: "amp_nmute"
+  uo[2]: "amp_i2s_bck"
+  uo[3]: "amp_i2s_ws"
+  uo[4]: "amp_i2s_d0"
   uo[5]: ""
   uo[6]: ""
   uo[7]: "pwm_out"
@@ -57,8 +56,8 @@ pinout:
   # Bidirectional pins
   uio[0]: "i2c_scl"
   uio[1]: "i2c_sda"
-  uio[2]: ""
-  uio[3]: ""
+  uio[2]: "amp_i2c_scl"
+  uio[3]: "amp_i2c_sda"
   uio[4]: ""
   uio[5]: ""
   uio[6]: ""

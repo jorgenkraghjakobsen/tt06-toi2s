@@ -30,17 +30,17 @@ module amp_state_control (
     SEND_CFG_0_ST    = 4'b0100,
     SEND_CFG_1_ST    = 4'b0101,
     SEND_CFG_WAIT_ST = 4'b0110,
-    UNMUTE_ST        = 4'b0111,
-    MUTE_ST          = 4'b1000; 
+    UNMUTE_ST        = 4'b0111;
 
+   
   reg [3:0] amp_state_reg,  amp_state_next; 
   
   always @(posedge clk_in)
   begin 
     if (!resetb) 
     begin
-      amp_state_reg <= INIT_ST; 
-      amp_state_next <= INIT_ST;
+      amp_state_next <= INIT_ST;       
+   //   amp_state_reg  <= INIT_ST; 
     end
     else 
       amp_state_reg <= amp_state_next; 
@@ -123,11 +123,9 @@ module amp_state_control (
          send_config_delayed = 1'b1;
          nenable_reg         = 1'b0;
          timer_start         = 1'b0;
-         if (nerror_in) 
-           amp_state_next = MUTE_ST; 
-         else  
-           amp_state_next = UNMUTE_ST; 
+         amp_state_next = UNMUTE_ST; 
         end
+      
     endcase
   end 
   assign nenable_out = nenable_reg ; 

@@ -6,9 +6,9 @@ target = sim
 
 pr  = ../..
 
-block = amp_frontend
+block = amp_if
 
-obj = $(pr)/obj/hdl/$(block)/$(target)
+obj = $(pr)/obj/$(block)/$(target)
 verilog_src = *.v 
 verilog_src_tb = tb/$(block)_tb.v
 
@@ -18,7 +18,7 @@ all: obj synth sim wave
 obj:
 	mkdir -p $(obj)
 synth: 
-	iverilog -o $(obj)/$(block).vvp $(verilog_src) $(verilog_src_tb) \
+	iverilog -v -o $(obj)/$(block).vvp $(verilog_src) $(verilog_src_tb) \
 	-D 'DUMP_FILE_NAME="$(obj)/$(block).vcd"' -D 'FPGA' 
 
 sim: 

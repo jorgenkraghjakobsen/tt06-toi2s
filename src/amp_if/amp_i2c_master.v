@@ -21,11 +21,14 @@ module amp_i2c_master (
     input clk_in,
     input resetb, 
     input send_cfg, 
-    inout sda, 
-    inout scl); 
+    input sdai,
+    output sdao, 
+    output scl); 
+
 parameter DIV = 5; 
 
-    reg [7:0] bootmem [7:0]; 
+
+reg [7:0] bootmem [7:0]; 
 initial begin
     bootmem[0] = 8'h40;           // Set Master volume  
     bootmem[1] = 8'h18;           // setting 0x30
@@ -54,18 +57,22 @@ end
         DONE_ST                = 13; 
 
    wire clk; 
+   //assign clk = clk_in;
    clk_div #(.DIV(5)) div (clk_in,resetb,clk);
 
    wire [7:0] opcode; 
-   reg [2:0] boot_index, boot_next; 
-   reg [3:0] state_reg , next_reg; 
-   reg [5:0] i2c_cnt , next_cnt;
+   reg [2:0] boot_index = 3'b000 , boot_next = 3'b000  ; 
+   reg [3:0] state_reg  = 4'b0000, next_reg  = 4'b0000  ; 
+   reg [5:0] i2c_cnt    = 6'b000000 , next_cnt = 6'b000000;
 
    reg i2c_scl, i2c_scl_next;
    reg i2c_sda, i2c_sda_next;  
   
-   assign sda = !i2c_sda ? 1'b0 : 1'bz; 
-   assign scl = !i2c_scl ? 1'b0 : 1'bz;  
+   assign sdao  = i2c_sda;  
+   
+   assign scl   = i2c_scl; 
+   //assign sda = !i2c_sda ? 1'b0 : 1'bz; 
+   //assign scl = !i2c_scl ? 1'b0 : 1'bz;  
 
    wire [6:0] i2c_address; 
    assign i2c_address = 7'b0100000;  
@@ -76,98 +83,98 @@ end
     begin
     if (!resetb) 
     begin
-      state_reg  <= INIT_ST; 
-      boot_index <= 3'b000;
-      i2c_cnt    <= 6'b000000;
-      i2c_scl    <= 1;
-      i2c_sda    <= 1;
-    end
+      next_reg    <= INIT_ST; 
+      boot_next   <= 3'b000;
+      next_cnt     <= 6'b000000;
+      i2c_scl_next <= 0;
+      i2c_sda_next <= 0;
+     end
     else 
     begin 
-      state_reg <= next_reg; 
-      i2c_cnt   <= next_cnt;
-      boot_index <= boot_next; 
-      i2c_scl  <= i2c_scl_next; 
-      i2c_sda  <= i2c_sda_next; 
+      state_reg   <= next_reg; 
+      i2c_cnt     <= next_cnt;
+      boot_index  <= boot_next; 
+      i2c_scl     <= i2c_scl_next; 
+      i2c_sda     <= i2c_sda_next; 
     end
    end
    
    always @* 
    begin
-    boot_next = boot_index;   
-    next_reg = state_reg;
-    next_cnt = i2c_cnt - 6'b1 ;
+    boot_next     = boot_index;   
+    next_reg      = state_reg;
+    next_cnt      = i2c_cnt - 6'b1 ;
     i2c_scl_next  = i2c_scl;
     i2c_sda_next  = i2c_sda;
      
     case (state_reg) 
       INIT_ST:
         begin
-            boot_next   = 3'b0;  
-            i2c_sda_next      = 1; 
-            i2c_scl_next      = 1;
-            next_reg     =  WAIT_TRIGGER_ST; 
+            boot_next       = 3'b0;  
+            i2c_sda_next    = 1; 
+            i2c_scl_next    = 1;
+            next_reg        =  WAIT_TRIGGER_ST; 
         end 
       WAIT_TRIGGER_ST: 
         begin 
-            boot_next   = 3'b0;  
-            i2c_sda_next      = 1; 
-            i2c_scl_next      = 1; 
+            boot_next       = 3'b0;  
+            i2c_sda_next    = 1; 
+            i2c_scl_next    = 1; 
             if (send_cfg) 
-                next_reg  = LOAD_CMD_ST; 
+              next_reg        = LOAD_CMD_ST; 
         end     
       LOAD_CMD_ST: 
         begin
-             i2c_sda_next      = 1; 
-             i2c_scl_next      = 1; 
+             i2c_sda_next   = 1; 
+             i2c_scl_next   = 1; 
          
            if (opcode[7] == 1'b0 ) 
             begin
         
-              next_reg     = SEND_I2C_START_ST; 
+              next_reg      = SEND_I2C_START_ST; 
             end
            else if (opcode[7:6] == 2'b10) 
            begin
-             boot_next  = boot_index + 3'h1; 
-             next_reg    = LOAD_CMD_ST; 
+             boot_next      = boot_index + 3'h1; 
+             next_reg       = LOAD_CMD_ST; 
            end
            else if (opcode[7:5] == 3'b110) // block write
-              next_reg     = SEND_I2C_START_ST; 
+              next_reg      = SEND_I2C_START_ST; 
            else 
-              next_reg     = DONE_ST; 
+              next_reg      = DONE_ST; 
         end 
       
       SEND_I2C_START_ST: 
         begin 
-            i2c_sda_next      = 0; 
-            i2c_scl_next      = 1; 
-            next_reg     = SEND_I2C_ADR_ST;
-            next_cnt     = 18*2;
+            i2c_sda_next    = 0; 
+            i2c_scl_next    = 1; 
+            next_reg        = SEND_I2C_ADR_ST;
+            next_cnt        = 2*18;
          end 
 
       SEND_I2C_ADR_ST: 
         begin
           if (i2c_cnt == 0) 
           begin
-            next_reg     = SEND_ADR_LSB_ST;
-            next_cnt     = 18*2;
+            next_reg        = SEND_ADR_LSB_ST;
+            next_cnt        = 2*18;
           end
           
           if (i2c_cnt > 6 ) 
-            i2c_sda_next = i2c_address[i2c_cnt[5:2]-2];
+            i2c_sda_next    = i2c_address[i2c_cnt[5:2]-2];
           else if (i2c_cnt > 4)
-            i2c_sda_next = 0;             // Write bit 
+            i2c_sda_next    = 0;             // Write bit 
           else 
-            i2c_sda_next = 1;             // Ack bit 
+            i2c_sda_next    = 1;             // Ack bit 
           
           if (i2c_cnt[1:0] == 2'b00) 
-             i2c_scl_next = 0; 
+             i2c_scl_next   = 0; 
           else if(i2c_cnt[1:0] == 2'b01)
-             i2c_scl_next = 1;
+             i2c_scl_next   = 1;
           else if(i2c_cnt[1:0] == 2'b10)
-             i2c_scl_next = 1;
+             i2c_scl_next   = 1;
           else if(i2c_cnt[1:0] == 2'b11)
-             i2c_scl_next = 0;
+             i2c_scl_next   = 0;
         end   
 
        SEND_ADR_LSB_ST:
@@ -176,7 +183,7 @@ end
           begin
             boot_next    = boot_index + 3'b001;
             next_reg     = SEND_DATA_ST;
-            next_cnt     = 18*2;
+            next_cnt     = 2*18;
           end
           
           if (i2c_cnt > 2 ) 
@@ -197,7 +204,7 @@ end
       LOAD_DATA_ST: 
       begin 
           next_reg      = SEND_DATA_ST; 
-          next_cnt      = 20;
+          next_cnt      = 2*18;
       end       
 
       SEND_DATA_ST:
@@ -205,7 +212,7 @@ end
           if (i2c_cnt == 0) 
           begin
             next_reg   =  SEND_I2C_STOP_ST;
-            next_cnt   =  14;
+            next_cnt   =  2*18;
             i2c_scl_next = 1;
           end
 

@@ -17,56 +17,48 @@ module tt_um_jorgenkraghjakobsen_toi2s (
 );
 
   // All output pins must be assigned. If not used, assign to 0.
-  //assign uo_out[7:5]  = 3'b000;
-  assign uio_out[7:4] = 4'b0000;
-  assign uio_oe[7:4]  = 4'b0000;
- 
-  toi2s_tt_top tt_top_inst ( 
-    .clk(clk),
-    .resetb(rst_n),
-    .ena(ena),
+  
+  wire [5:0] debug_out;
 
-    .i2c_scl(i2c_scl),
+  toi2s_tt_top tt_top_inst ( 
+    .clk(clk),                        //! TT harnest clock
+    .resetb(rst_n),                   //! TT harnest reset active low
+    .ena(ena),                        //! TT harnest Circuit enable 
+
+    .i2c_scl(i2c_scl),                
     .i2c_sdai(i2c_sdai),
     .i2c_sdao(i2c_sdao),
+    
+    .rx_in(rx_in), 
     
     .amp_i2s_bck(amp_i2s_bck),
     .amp_i2s_ws(amp_i2s_ws),
     .amp_i2s_d0(amp_i2s_d0),
     
-    .amp_i2c_scl(amp_i2c_scl),        // amp i2c clk control  (master ->  amp (slave))
-    .amp_i2c_sdai(amp_i2c_sdai),      // amp i2c data control (master)
-    .amp_i2c_sdao(amp_i2c_sdao),      // amp i2c data control (master)
+    .amp_i2c_scl(amp_i2c_scl),        //! amp i2c clk control  (master ->  amp (slave))
+    .amp_i2c_sdai(amp_i2c_sdai),      //! amp i2c data control (master)
+    .amp_i2c_sdao(amp_i2c_sdao),      //! amp i2c data control (master)
     
-    .amp_nenable(amp_nenable),        // amp nenable
-    .amp_mute(amp_mute),              // amp mute      
+    .amp_nenable(amp_nenable),        //! amp nenable
+    .amp_mute(amp_mute),              //! amp mute      
 
     .pwm_out(pwm_out),
-    .rx_in(rx_in) 
+
+    .debug_out(debug_out),
+    .debug_in(debug_in)
+
     ); 
-
-
+  
+  // Dedicated inputs 
     
-
-
-  // spdif_decoder spdif_decoder(
-  //   .clk_in(clk),
-  //   .resetb(rst_n),
-  //   .rx_in(ui_in[0]),
-  //   .i2s_bck(uo_out[0]),
-  //   .i2s_ws(uo_out[1]),
-  //   .i2s_d0(uo_out[2]),
-  //   .audio_locked(audio_locked),
-  //   .edgedetect(edge_detect));
-  
-  // Dedicated input 
   assign rx_in      = ui_in[0];   
- 
-  
+  assign debug_in   = ui_in[1];    
+    
+    
   // Dedicated outputs 
 
   assign uo_out[0] = amp_nenable;    // nenable
-  assign uo_out[1] = amp_mute;    // mute 
+  assign uo_out[1] = amp_nmute;    // mute 
   assign uo_out[2] = amp_i2s_bck;    // i2s_bck 
   assign uo_out[3] = amp_i2s_ws;    // i2s_ws
   assign uo_out[4] = amp_i2s_d0;    // i2s_d0
@@ -76,20 +68,25 @@ module tt_um_jorgenkraghjakobsen_toi2s (
 
   // Bidirectional input / output 
 
-  assign amp_i2c_sdai = uio_in[3]; 
-  assign uio_oe[3]  = (amp_i2c_sdao == 1'b0) ? 1'b1 : 1'b0;
-  assign uio_out[3] = amp_i2c_sdao; 
+  // I2C to circuit - client and input is only input (No strech mode imp.)
+  assign i2c_scl    = uio_in[0];
+  assign uio_oe[0]  = 1'b0;
+  assign uio_out[0] = 1'b0; 
   
-  //assign amp_i2c_scl= uio_in[2];
-  assign uio_oe[2]  = 1'b1;
-  assign uio_out[2] = amp_i2c_scl; 
-
-
   assign i2c_sdai   = uio_in[1];
   assign uio_oe[1]  = (i2c_sdao == 1'b0) ? 1'b1 : 1'b0;
   assign uio_out[1] = i2c_sdao; 
 
-  assign i2c_scl    = uio_in[0];
-  assign uio_oe[0]  = 1'b0;
-  assign uio_out[0] = 1'b0; 
+  // I2C to amplifier - I2C clock on pin amp_i2c_scl is only output to Amp
+  //assign amp_i2c_scl= uio_in[2];
+  assign uio_oe[2]  = 1'b1;
+  assign uio_out[2] = amp_i2c_scl; 
+
+  assign amp_i2c_sdai = uio_in[3]; 
+  assign uio_oe[3]  = (amp_i2c_sdao == 1'b0) ? 1'b1 : 1'b0;
+  assign uio_out[3] = amp_i2c_sdao; 
+
+  assign uio_out[7:4] = debug[3:0];
+  assign uio_oe[7:4]  = 4'b1111;
+
 endmodule
