@@ -55,7 +55,20 @@
 `include "timescale.v"
 `include "i2cSlave_define.v"
 
-module serialInterface (clearStartStopDet, clk, dataIn, dataOut, regAddr, rst, scl, sdaIn, sdaOut, startStopDetState, writeEn,streamSt_mon);
+module serialInterface (
+clearStartStopDet, 
+clk, 
+dataIn, 
+dataOut, 
+regAddr, 
+rst, 
+scl,
+sdaIn, 
+sdaOut, 
+startStopDetState, 
+writeEn,
+streamSt_mon
+);
 input   clk;
 input   [7:0]dataIn;
 input   rst;

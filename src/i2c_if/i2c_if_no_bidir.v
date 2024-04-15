@@ -154,7 +154,7 @@ always @(posedge clk) begin
     end
   end
 end
-assign streamSt_mon = {regAddr[0],write_en};
+//assign streamSt_mon = {regAddr[0],write_en};
 assign address            = regAddr[5:0]; 
 
 serialInterface u_serialInterface (
