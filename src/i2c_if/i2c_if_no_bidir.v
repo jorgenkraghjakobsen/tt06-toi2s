@@ -168,7 +168,7 @@ serialInterface u_serialInterface (
   .sdaIn(sdaDeb), 
   .sdaOut(sdaOut), 
   .startStopDetState(startStopDetState),
-  .clearStartStopDet(clearStartStopDet) 
+  .clearStartStopDet(clearStartStopDet), 
   .streamSt_mon(streamSt_mon)
 );
  
