@@ -133,4 +133,3 @@ module amp_state_control (
   assign nmute_out = ~mute;  
   assign send_config_out = send_config; 
 endmodule
- 

@@ -173,4 +173,3 @@ serialInterface u_serialInterface (
 );
  
 endmodule
- 
