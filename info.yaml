@@ -17,7 +17,6 @@ project:
   source_files:
     - "amp_if/amp_if.v"
     - "amp_if/amp_i2c_master.v"
-    - "amp_if/amp_i2s_interface.v"
     - "amp_if/amp_state_control.v"
     - "amp_if/clk_div.v"
     - "amp_if/timer_simple.v"
