@@ -5,7 +5,21 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = spdif_decoder/spdif_decoder.v tt_um_jorgenkraghjakobsen_toi2s.v
+PROJECT_SOURCES = amp_if/amp_if.v \
+amp_if/amp_i2c_master.v \
+amp_if/amp_state_control.v \
+amp_if/clk_div.v \
+amp_if/timer_simple.v \
+amp_if/spdif_decoder.v \
+i2c_if/i2c_if_no_bidir.v \
+i2c_if/i2cSlave_define.v \
+i2c_if/serialInterface.v \
+i2c_if/timescale.v \
+pwm/pwm.v \
+rb_toi2s/rb_toi2s.sv.conv.v \
+toi2s_tt_top/toi2s_tt_top.sv.conv.v \
+tt_um_jorgenkraghjakobsen_toi2s.v
+
 
 ifneq ($(GATES),yes)
 

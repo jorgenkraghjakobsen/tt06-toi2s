@@ -40,7 +40,7 @@ module tt_um_jorgenkraghjakobsen_toi2s (
     .amp_i2c_sdao(amp_i2c_sdao),      //! amp i2c data control (master)
     
     .amp_nenable(amp_nenable),        //! amp nenable
-    .amp_mute(amp_mute),              //! amp mute      
+    .amp_nmute(amp_nmute),              //! amp mute      
 
     .pwm_out(pwm_out),
 
@@ -86,7 +86,7 @@ module tt_um_jorgenkraghjakobsen_toi2s (
   assign uio_oe[3]  = (amp_i2c_sdao == 1'b0) ? 1'b1 : 1'b0;
   assign uio_out[3] = amp_i2c_sdao; 
 
-  assign uio_out[7:4] = debug[3:0];
+  assign uio_out[7:4] = debug_out[3:0];
   assign uio_oe[7:4]  = 4'b1111;
 
 endmodule

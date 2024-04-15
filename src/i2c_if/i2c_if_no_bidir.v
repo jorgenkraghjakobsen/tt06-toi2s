@@ -169,7 +169,7 @@ serialInterface u_serialInterface (
   .sdaOut(sdaOut), 
   .startStopDetState(startStopDetState),
   .clearStartStopDet(clearStartStopDet) 
-  //.streamSt_mon(streamSt_mon)
+  .streamSt_mon(streamSt_mon)
 );
  
 endmodule

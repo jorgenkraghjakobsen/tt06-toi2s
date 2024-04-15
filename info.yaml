@@ -34,7 +34,7 @@ project:
 pinout:
   # Inputs
   ui[0]: "rx_in"
-  ui[1]: ""
+  ui[1]: "debug_in"
   ui[2]: ""
   ui[3]: ""
   ui[4]: ""

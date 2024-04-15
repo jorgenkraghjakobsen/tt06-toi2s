@@ -132,4 +132,5 @@ module amp_state_control (
   assign mute      = ~audio_locked_in | ~send_config_delayed;  
   assign nmute_out = ~mute;  
   assign send_config_out = send_config; 
-endmodule 
+endmodule
+ 
