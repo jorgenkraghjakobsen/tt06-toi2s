@@ -122,8 +122,8 @@ end
       
       LOAD_CMD_ST:
       begin 
-        i2c_sda_next <= 1; 
-        i2c_scl_next  <= 1; 
+        i2c_sda  <= 1; 
+        i2c_scl  <= 1; 
         if (opcode[7] == 1'b0 ) 
           state_reg   <= SEND_I2C_START_ST; 
         else if (opcode[7:6] == 2'b10) 
