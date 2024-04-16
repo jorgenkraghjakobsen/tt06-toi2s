@@ -259,7 +259,7 @@ end
         next_reg   =  DONE_ST; 
       end
 
-      defaut:
+      default:
       begin
         i2c_scl_next = 1; 
         i2c_sda_next = 1;
