@@ -33,22 +33,39 @@ module amp_state_control (
     UNMUTE_ST        = 4'b0111;
 
    
-  reg [3:0] amp_state_reg,  amp_state_next; 
+  reg [3:0] amp_state_reg; //,  amp_state_next; 
   
   always @(posedge clk_in)
   begin 
     if (!resetb) 
-    begin
-      amp_state_next <= INIT_ST;       
-   //   amp_state_reg  = INIT_ST; 
-    end
+      amp_state_reg = INIT_ST;       
     else 
-      amp_state_reg <= amp_state_next; 
+      case (amp_state_reg) 
+        INIT_ST : // Startup system 
+            amp_state_reg      = ENABLED_0_ST; 
+        ENABLED_0_ST: 
+            amp_state_reg      = ENABLED_1_ST; 
+        ENABLED_1_ST: 
+            amp_state_reg      = ENABLED_WAIT_ST; 
+        ENABLED_WAIT_ST: 
+            if(timer_timeout) 
+              amp_state_reg   = SEND_CFG_0_ST; 
+        SEND_CFG_0_ST:
+            amp_state_reg    = SEND_CFG_1_ST; 
+        SEND_CFG_1_ST:
+            amp_state_reg   = SEND_CFG_WAIT_ST; 
+        SEND_CFG_WAIT_ST: 
+            if (timer_timeout) 
+              amp_state_reg = UNMUTE_ST; 
+            else  
+              amp_state_reg = SEND_CFG_WAIT_ST; 
+        UNMUTE_ST: 
+          amp_state_reg = UNMUTE_ST; 
+      endcase      
   end 
 
-  always @* 
+  always @(amp_state_reg)
   begin  
-    amp_state_next = amp_state_reg; 
     case(amp_state_reg) 
       INIT_ST : // Startup system 
         begin
@@ -56,7 +73,6 @@ module amp_state_control (
           send_config_delayed = 1'b0;
           nenable_reg         = 1'b1;
           timer_start         = 1'b0;
-          amp_state_next      = ENABLED_0_ST; 
         end
       ENABLED_0_ST: 
         begin 
@@ -64,7 +80,6 @@ module amp_state_control (
          send_config_delayed = 1'b0;
          nenable_reg         = 1'b0;
          timer_start         = 1'b1;   
-         amp_state_next      = ENABLED_1_ST; 
         end 
       ENABLED_1_ST: 
         begin 
@@ -72,7 +87,6 @@ module amp_state_control (
          send_config_delayed = 1'b0;
          nenable_reg         = 1'b0;
          timer_start         = 1'b0;   
-         amp_state_next      = ENABLED_WAIT_ST; 
         end 
       
       ENABLED_WAIT_ST: 
@@ -81,10 +95,6 @@ module amp_state_control (
          send_config_delayed = 1'b0;
          nenable_reg         = 1'b0;
          timer_start         = 1'b0;   
-         if(timer_timeout) 
-         begin 
-             amp_state_next = SEND_CFG_0_ST; 
-         end 
         end
 
       SEND_CFG_0_ST:
@@ -93,7 +103,6 @@ module amp_state_control (
           send_config_delayed = 1'b0;
           nenable_reg         = 1'b0;
           timer_start         = 1'b1;
-          amp_state_next    = SEND_CFG_1_ST; 
         end
       
       SEND_CFG_1_ST:
@@ -102,7 +111,6 @@ module amp_state_control (
           send_config_delayed = 1'b0;
           nenable_reg         = 1'b0;
           timer_start         = 1'b0;
-          amp_state_next   = SEND_CFG_WAIT_ST; 
         end
       
       SEND_CFG_WAIT_ST: 
@@ -111,10 +119,6 @@ module amp_state_control (
           send_config_delayed = 1'b0;
           nenable_reg         = 1'b0;
           timer_start         = 1'b0;
-          if (timer_timeout) 
-            amp_state_next = UNMUTE_ST; 
-          else  
-            amp_state_next = SEND_CFG_WAIT_ST; 
         end
 
       UNMUTE_ST: 
@@ -123,7 +127,6 @@ module amp_state_control (
          send_config_delayed = 1'b1;
          nenable_reg         = 1'b0;
          timer_start         = 1'b0;
-         amp_state_next = UNMUTE_ST; 
         end
       
     endcase
