@@ -174,7 +174,7 @@ end
           begin
             boot_index   = boot_index + 3'b001;
             state_reg     = SEND_DATA_ST;
-            next_cnt     = 2*18;
+            i2c_cnt     = 2*18;
           end
           
           if (i2c_cnt > 2 ) 
