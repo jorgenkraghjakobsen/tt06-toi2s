@@ -19,9 +19,12 @@ module amp_if (
     output debug_out
     );  
     
+    assign debug_out = 1'b1; 
+    
     wire audio_locked;
     wire send_config;
-    
+    wire rx_out_tmp;
+
     wire i2s_bck_tmp, i2s_ws_tmp, i2s_d0_tmp; 
     
     spdif_decoder spdif(
