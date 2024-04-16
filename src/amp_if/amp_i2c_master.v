@@ -152,7 +152,7 @@ end
           end
           
           if (i2c_cnt > 6 ) 
-            i2c_sda    = i2c_address[i2c_cnt[5:2]-2];
+            i2c_sda    <= i2c_address[i2c_cnt[5:2]-2];
           else if (i2c_cnt > 4)
             i2c_sda    <= 0;             // Write bit 
           else 
