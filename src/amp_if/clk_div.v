@@ -20,9 +20,9 @@ module clk_div
    
    always @(posedge clk_in)
    begin
-      //  if (!resetb)
-      //    cc_reg <= 6'b111111;
-      //  else
-      cc_reg <= cc_reg + 6'h01;
+      if (!resetb)
+         cc_reg <= 6'b000000;
+      else
+         cc_reg <= cc_reg + 6'h01;
    end
 endmodule

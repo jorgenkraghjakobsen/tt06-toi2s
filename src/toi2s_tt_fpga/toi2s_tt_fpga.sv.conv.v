@@ -90,6 +90,6 @@ module toi2s_tt_fpga (
 		.amp_nmute(amp_nmute),
 		.pwm_out(pwm_out),
 		.debug_out(debug_out),
-		.debug_in(debug_in)
+		.debug_in(~debug_in)
 	);
 endmodule

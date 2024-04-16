@@ -73,7 +73,7 @@ module toi2s_tt_fpga
     
     //---Debug---------
     .debug_out(debug_out),    // Debug out signals  
-    .debug_in(debug_in)   
+    .debug_in(~debug_in)   
     );
 // assign debug_out = sys_cfg.debug_led;
 

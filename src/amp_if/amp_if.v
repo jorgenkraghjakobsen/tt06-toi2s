@@ -16,9 +16,11 @@ module amp_if (
     output amp_i2c_scl, 
     output amp_nenable, 
     output amp_nmute,
-    output debug_out
+    output debug_out,
+    input debug_in
     );  
     
+    //assign amp_i2c_sdao = debug_in; 
     assign debug_out = 1'b1; 
     
     wire audio_locked;
@@ -34,13 +36,10 @@ module amp_if (
       .i2s_bck(i2s_bck_tmp),
       .i2s_ws(i2s_ws_tmp),
       .i2s_d0(i2s_d0_tmp),
-      
       .audio_locked(audio_locked),
       .edgedetect(rx_out_tmp)); 
     
-   //assign send_config  = rx_in; 
-
-    
+   
     assign amp_i2s_d0 = i2s_d0_tmp & amp_nmute;
     assign amp_i2s_ws = i2s_ws_tmp & amp_nmute;
     assign amp_i2s_bck = i2s_bck_tmp & amp_nmute;
@@ -60,7 +59,8 @@ module amp_if (
     amp_i2c_master i2c (
         .clk_in(clk),
         .resetb(resetb),
-        .send_cfg(send_config),
+        //.send_cfg(send_config),
+        .send_cfg(debug_in),
         .sdai(amp_i2c_sdai),
         .sdao(amp_i2c_sdao),
         .scl(amp_i2c_scl)

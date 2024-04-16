@@ -37,7 +37,7 @@ module toi2s_tt_top
     input   debug_in            // Was btn_s2,             // Button 2 input (pin 4)   
     );
     
-assign debug_out = sys_cfg.debug_led;
+assign debug_out = { debug_in, sys_cfg.debug_led[4:0] };
 
 //--------------------------------------------------------------------------------------------------------
 // Clock and reset   
@@ -65,7 +65,8 @@ amp_if amp_if_inst(
     .amp_i2c_scl(amp_i2c_scl),
     .amp_i2c_sdai(amp_i2c_sdai),
     .amp_i2c_sdao(amp_i2c_sdao),
-    .debug_out(amp_debug_out)
+    .debug_out(amp_debug_out),
+    .debug_in(debug_in)
     );
 //--------------------------------------------------------------------------------------------------------
 // Register bank structs  
