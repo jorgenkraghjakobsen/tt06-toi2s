@@ -62,9 +62,13 @@ end
 
    wire [7:0] opcode; 
 
-   reg [2:0] boot_index = 3'b000 , boot_next = 3'b000  ; 
-   reg [3:0] state_reg  = 4'b0000, next_reg  = 4'b0000  ; 
-   reg [5:0] i2c_cnt    = 6'b000000 , next_cnt = 6'b000000;
+   reg [2:0] boot_index , boot_next  ; 
+   reg [3:0] state_reg  , next_reg   ; 
+   reg [5:0] i2c_cnt    , next_cnt   ;
+
+  //  reg [2:0] boot_index = 3'b000 , boot_next = 3'b000  ; 
+  //  reg [3:0] state_reg  = 4'b0000, next_reg  = 4'b0000  ; 
+  //  reg [5:0] i2c_cnt    = 6'b000000 , next_cnt = 6'b000000;
 
    reg i2c_scl, i2c_scl_next;
    reg i2c_sda, i2c_sda_next;  
@@ -264,6 +268,7 @@ end
         i2c_scl_next = 1; 
         i2c_sda_next = 1;
         next_reg   =  DONE_ST; 
+
       end
     endcase
    end
