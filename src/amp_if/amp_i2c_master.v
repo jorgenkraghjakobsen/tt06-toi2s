@@ -84,8 +84,8 @@ end
     begin
     if (!resetb) 
     begin
-      next_reg    = INIT_ST; 
-      boot_next   = 3'b000;
+      next_reg     = INIT_ST; 
+      boot_next    = 3'b000;
       next_cnt     = 6'b000000;
       i2c_scl_next = 0;
       i2c_sda_next = 0;
@@ -254,6 +254,13 @@ end
       end        
       DONE_ST:
       begin 
+        i2c_scl_next = 1; 
+        i2c_sda_next = 1;
+        next_reg   =  DONE_ST; 
+      end
+
+      defaut:
+      begin
         i2c_scl_next = 1; 
         i2c_sda_next = 1;
         next_reg   =  DONE_ST; 

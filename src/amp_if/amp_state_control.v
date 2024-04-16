@@ -49,7 +49,9 @@ module amp_state_control (
             amp_state_reg      = ENABLED_WAIT_ST; 
         ENABLED_WAIT_ST: 
             if(timer_timeout) 
-              amp_state_reg   = SEND_CFG_0_ST; 
+              amp_state_reg   = SEND_CFG_0_ST;
+            else 
+              amp_state_reg   = ENABLED_WAIT_ST;   
         SEND_CFG_0_ST:
             amp_state_reg    = SEND_CFG_1_ST; 
         SEND_CFG_1_ST:
@@ -61,6 +63,8 @@ module amp_state_control (
               amp_state_reg = SEND_CFG_WAIT_ST; 
         UNMUTE_ST: 
           amp_state_reg = UNMUTE_ST; 
+        default:
+          amp_state_reg = INIT_ST;   
       endcase      
   end 
 
@@ -129,6 +133,13 @@ module amp_state_control (
          timer_start         = 1'b0;
         end
       
+      default:
+        begin
+          send_config         = 1'b0;  
+          send_config_delayed = 1'b0;
+          nenable_reg         = 1'b1;
+          timer_start         = 1'b0;
+        end
     endcase
   end 
   assign nenable_out = nenable_reg ; 
