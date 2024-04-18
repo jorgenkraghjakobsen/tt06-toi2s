@@ -72,6 +72,8 @@ amp_if amp_if_inst(
 // Register bank structs  
 //-------------------------------------------------------------------------------------------------------- 
 rb_sys_cfg_wire_t sys_cfg;
+rb_amp_cfg_wire_t amp_cfg;
+
 
 //--------------------------------------------------------------------------------------------------------
 // i2c  
@@ -106,7 +108,8 @@ rb_toi2s rb_toi2s_inst (
     .data_write_in      (rb_data_write_to_reg), 
     .data_read_out      (rb_data_read_from_reg),
     .write_en           (rb_write_en),
-    .sys_cfg            (sys_cfg)
+    .sys_cfg            (sys_cfg),
+    .amp_cfg            (amp_cfg)
     ); 
 
 //-------------------------------------------------------------------------------------------------------- 
