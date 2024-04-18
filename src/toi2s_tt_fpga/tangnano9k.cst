@@ -19,10 +19,10 @@ IO_PORT "amp_i2s_d0" IO_TYPE=LVCMOS33;
 IO_LOC  "amp_i2s_bck" 73;
 IO_PORT "amp_i2s_bck" IO_TYPE=LVCMOS33;
 
-IO_LOC  "ena" 63;
+IO_LOC  "ena" 42;
 IO_PORT "ena" IO_TYPE=LVCMOS33 PULL_MODE=UP;
 
-IO_LOC  "rx_in" 38;
+IO_LOC  "rx_in" 63;
 IO_PORT "rx_in" IO_TYPE=LVCMOS33;
 
 IO_LOC  "pwm_out" 35;

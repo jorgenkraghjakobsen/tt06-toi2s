@@ -11,7 +11,9 @@
     wire clk;
     assign clk = clk_in;
     
+    assign edgedetect = rxup; //rxedge; //edgedetect i2s_bck; // bitedge_detected & (bitlength > 12) & (bitlength <= 16);
   
+    
     assign audio_locked = 1'b1; 
     
     reg [3:0] correlator;
@@ -45,7 +47,7 @@
     reg phase_reg;
     reg ws_old_reg;
     reg i2s_ws_reg;
-    localparam  bckclks=17;
+    localparam  bckclks=8; //17;
     
     always @(posedge clk)
     begin
@@ -96,7 +98,7 @@
       end
     end
     
-    assign edgedetect = i2s_bck; // bitedge_detected & (bitlength > 12) & (bitlength <= 16);
+    //assign edgedetect = rxedge; //edgedetect i2s_bck; // bitedge_detected & (bitlength > 12) & (bitlength <= 16);
   
     
     //assign i2s_bck_next = (bitcnt <= 8) or (bitcnt )
@@ -207,9 +209,9 @@
       end
     end
   
-    localparam [7:0] T3 = 42; //32; //42;
-    localparam [7:0] T2 = 38; //30; //38;
-    localparam [7:0] T1 = 20;  //16; //20;
+    localparam [7:0] T3 = 22; //42; //32; //42;
+    localparam [7:0] T2 = 20; //38; //30; //38;
+    localparam [7:0] T1 = 10; //20;  //16; //20;
   
     always @*
     begin

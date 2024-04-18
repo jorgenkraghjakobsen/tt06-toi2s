@@ -14,17 +14,19 @@ typedef struct packed {
   logic [5:0] debug_led;                       // Debug led signals
 } rb_sys_cfg_wire_t;
 
-// Wire interface for dsp_cfg
+// Wire interface for amp_cfg
 typedef struct packed {
-  logic       bypass_enable;                   // Bypass filters on the DSP
-  logic       dc_filter_enable;                // Bypass DC filter on the DSP
-  logic       bp_filter_enable;                // Bypass bandpass filter on the DSP
-  logic       dec_filter_enable;               // Bypass decimation filter on the DSP
-  logic       pli_filter_enable;               // Bypass PLI filter on the DSP
-  logic       placeholder1;                    // placeholder
-  logic       placeholder2;                    // placeholder
-  logic       placeholder3;                    // placeholder
-} rb_dsp_cfg_wire_t;
+  logic [7:0] status;                          // amp status 
+  logic [7:0] cfg;                             // Amp cfg bits
+  logic [7:0] bootmem0;                        // boot mem
+  logic [7:0] bootmem1;                        // boot mem
+  logic [7:0] bootmem2;                        // boot mem
+  logic [7:0] bootmem3;                        // boot mem
+  logic [7:0] bootmem4;                        // boot mem
+  logic [7:0] bootmem5;                        // boot mem
+  logic [7:0] bootmem6;                        // boot mem
+  logic [7:0] bootmem7;                        // boot mem
+} rb_amp_cfg_wire_t;
 
 
 endpackage

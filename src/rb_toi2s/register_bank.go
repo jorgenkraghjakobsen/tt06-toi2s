@@ -64,22 +64,24 @@ func main() {
 	//syid, name, 					section, address, size, pos, reset, readonly, shortDescription, longDescription 		 make the rest of the 3 registers for adress 0, and offseet the rest
 	
 
-	dsp_cfg := []Symbol{
-		{0, "bypass_enable", 		"dsp_cfg", 0, 1, 0, 1, 		false, "Bypass filters on the DSP", "Long"},
-		{1, "dc_filter_enable", 	"dsp_cfg", 0, 1, 1, 1, 		false, "Bypass DC filter on the DSP", "Long"},
-		{2, "bp_filter_enable", 	"dsp_cfg", 0, 1, 2, 1, 		false, "Bypass bandpass filter on the DSP", "Long"},
-		{3, "dec_filter_enable", 	"dsp_cfg", 0, 1, 3, 1, 		false, "Bypass decimation filter on the DSP", "Long"},
-		{4, "pli_filter_enable", 	"dsp_cfg", 0, 1, 4, 1, 		false, "Bypass PLI filter on the DSP", "Long"},
-		{5, "placeholder1", 		"dsp_cfg", 0, 1, 5, 0, 		false, "placeholder", "Long"},
-		{6, "placeholder2", 		"dsp_cfg", 0, 1, 6, 0, 		false, "placeholder", "Long"},
-		{7, "placeholder3", 		"dsp_cfg", 0, 1, 7, 0, 		false, "placeholder", "Long"},
+	amp_cfg := []Symbol{
+		{0, "status", 				"amp_cfg",  0, 8, 0, 0, 	true,  "amp status ", "Long"},
+		{1, "cfg",				 	"amp_cfg",  1, 8, 0, 0, 	false, "Amp cfg bits", "Long"},
+		{8, "bootmem0",		 		"amp_cfg",  8, 8, 0, 0x40,  false, "boot mem", "Long"},
+		{9, "bootmem1", 			"amp_cfg",  9, 8, 0, 0x18,	false, "boot mem", "Long"},
+		{10, "bootmem2",	 		"amp_cfg", 10, 8, 0, 0x53,  false, "boot mem", "Long"},
+		{11, "bootmem3", 			"amp_cfg", 11, 8, 0, 0x08,	false, "boot mem", "Long"},
+		{12, "bootmem4",	 		"amp_cfg", 12, 8, 0, 0xff,  false, "boot mem", "Long"},
+		{13, "bootmem5", 			"amp_cfg", 13, 8, 0, 0xff, 	false, "boot mem", "Long"},
+		{14, "bootmem6",	 		"amp_cfg", 14, 8, 0, 0xff,  false, "boot mem", "Long"},
+		{15, "bootmem7", 			"amp_cfg", 15, 8, 0, 0xff, 	false, "boot mem", "Long"},
 	}
 
     sec := []Section{
 		//SID, Name, description, parent, offset, size, symbols
 
 		{0, "sys_cfg", "System configuration", 				nil, 0x00, 0x10, sys_cfg},	
-		{1, "dsp_cfg", "DSP interface and statemachine", 	nil, 0x40, 0x10, dsp_cfg},	
+		{1, "amp_cfg", "Amp config and monitor sec", 	    nil, 0x10, 0x10, amp_cfg},	
 	}
 
 	// create a array of array of symbols

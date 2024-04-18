@@ -3,7 +3,6 @@
 // Written by Jørgen Kragh Jakobsen, All right reserved 
 //-----------------------------------------------------------------------------
 //`include "rb_toi2s_struct.svh"
-
 import toi2s_pkg::*;
 
 module rb_toi2s
@@ -19,7 +18,7 @@ module rb_toi2s
 	input  logic 				write_en,
 //---------------------------------------------
 	inout rb_sys_cfg_wire_t              sys_cfg,
-	inout rb_dsp_cfg_wire_t              dsp_cfg 
+	inout rb_amp_cfg_wire_t              amp_cfg 
 );
 //------------------------------------------------Write to registers and reset-
 // Create registers
@@ -30,15 +29,16 @@ reg        reg__sys_cfg__enable_other;                           //Enable other 
 reg [7:0]  reg__sys_cfg__pwm_duty;                               //Counter value for pwm
 reg [5:0]  reg__sys_cfg__debug_led;                              //Debug led signals
 
-    // --- Section: dsp_cfg  Offset: 0x0040  Size: 16
-reg        reg__dsp_cfg__bypass_enable;                          //Bypass filters on the DSP
-reg        reg__dsp_cfg__dc_filter_enable;                       //Bypass DC filter on the DSP
-reg        reg__dsp_cfg__bp_filter_enable;                       //Bypass bandpass filter on the DSP
-reg        reg__dsp_cfg__dec_filter_enable;                      //Bypass decimation filter on the DSP
-reg        reg__dsp_cfg__pli_filter_enable;                      //Bypass PLI filter on the DSP
-reg        reg__dsp_cfg__placeholder1;                           //placeholder
-reg        reg__dsp_cfg__placeholder2;                           //placeholder
-reg        reg__dsp_cfg__placeholder3;                           //placeholder
+    // --- Section: amp_cfg  Offset: 0x0010  Size: 16
+reg [7:0]  reg__amp_cfg__cfg;                                    //Amp cfg bits
+reg [7:0]  reg__amp_cfg__bootmem0;                               //boot mem
+reg [7:0]  reg__amp_cfg__bootmem1;                               //boot mem
+reg [7:0]  reg__amp_cfg__bootmem2;                               //boot mem
+reg [7:0]  reg__amp_cfg__bootmem3;                               //boot mem
+reg [7:0]  reg__amp_cfg__bootmem4;                               //boot mem
+reg [7:0]  reg__amp_cfg__bootmem5;                               //boot mem
+reg [7:0]  reg__amp_cfg__bootmem6;                               //boot mem
+reg [7:0]  reg__amp_cfg__bootmem7;                               //boot mem
 
 always_ff @(posedge clk)
 begin
@@ -51,15 +51,16 @@ begin
     reg__sys_cfg__pwm_duty                                <=  8'b10000101;   //Counter value for pwm
     reg__sys_cfg__debug_led                               <=  6'b01010101;   //Debug led signals
 
-    // --- Section: dsp_cfg  Offset: 0x0040  Size: 16
-    reg__dsp_cfg__bypass_enable                           <=  1'b00000001;   //Bypass filters on the DSP
-    reg__dsp_cfg__dc_filter_enable                        <=  1'b00000001;   //Bypass DC filter on the DSP
-    reg__dsp_cfg__bp_filter_enable                        <=  1'b00000001;   //Bypass bandpass filter on the DSP
-    reg__dsp_cfg__dec_filter_enable                       <=  1'b00000001;   //Bypass decimation filter on the DSP
-    reg__dsp_cfg__pli_filter_enable                       <=  1'b00000001;   //Bypass PLI filter on the DSP
-    reg__dsp_cfg__placeholder1                            <=  1'b00000000;   //placeholder
-    reg__dsp_cfg__placeholder2                            <=  1'b00000000;   //placeholder
-    reg__dsp_cfg__placeholder3                            <=  1'b00000000;   //placeholder
+    // --- Section: amp_cfg  Offset: 0x0010  Size: 16
+    reg__amp_cfg__cfg                                     <=  8'b00000000;   //Amp cfg bits
+    reg__amp_cfg__bootmem0                                <=  8'b01000000;   //boot mem
+    reg__amp_cfg__bootmem1                                <=  8'b00011000;   //boot mem
+    reg__amp_cfg__bootmem2                                <=  8'b01010011;   //boot mem
+    reg__amp_cfg__bootmem3                                <=  8'b00001000;   //boot mem
+    reg__amp_cfg__bootmem4                                <=  8'b11111111;   //boot mem
+    reg__amp_cfg__bootmem5                                <=  8'b11111111;   //boot mem
+    reg__amp_cfg__bootmem6                                <=  8'b11111111;   //boot mem
+    reg__amp_cfg__bootmem7                                <=  8'b11111111;   //boot mem
   end
   else
   begin
@@ -74,16 +75,24 @@ begin
  
         002 : reg__sys_cfg__debug_led                           <=   data_write_in[5:0];  // Debug led signals
  
-        064 : begin 
-              reg__dsp_cfg__bypass_enable                       <=   data_write_in[0:0];  // Bypass filters on the DSP
-              reg__dsp_cfg__dc_filter_enable                    <=   data_write_in[1:1];  // Bypass DC filter on the DSP
-              reg__dsp_cfg__bp_filter_enable                    <=   data_write_in[2:2];  // Bypass bandpass filter on the DSP
-              reg__dsp_cfg__dec_filter_enable                   <=   data_write_in[3:3];  // Bypass decimation filter on the DSP
-              reg__dsp_cfg__pli_filter_enable                   <=   data_write_in[4:4];  // Bypass PLI filter on the DSP
-              reg__dsp_cfg__placeholder1                        <=   data_write_in[5:5];  // placeholder
-              reg__dsp_cfg__placeholder2                        <=   data_write_in[6:6];  // placeholder
-              reg__dsp_cfg__placeholder3                        <=   data_write_in[7:7];  // placeholder
-              end
+        017 : reg__amp_cfg__cfg                                 <=   data_write_in[7:0];  // Amp cfg bits
+ 
+        024 : reg__amp_cfg__bootmem0                            <=   data_write_in[7:0];  // boot mem
+ 
+        025 : reg__amp_cfg__bootmem1                            <=   data_write_in[7:0];  // boot mem
+ 
+        026 : reg__amp_cfg__bootmem2                            <=   data_write_in[7:0];  // boot mem
+ 
+        027 : reg__amp_cfg__bootmem3                            <=   data_write_in[7:0];  // boot mem
+ 
+        028 : reg__amp_cfg__bootmem4                            <=   data_write_in[7:0];  // boot mem
+ 
+        029 : reg__amp_cfg__bootmem5                            <=   data_write_in[7:0];  // boot mem
+ 
+        030 : reg__amp_cfg__bootmem6                            <=   data_write_in[7:0];  // boot mem
+ 
+        031 : reg__amp_cfg__bootmem7                            <=   data_write_in[7:0];  // boot mem
+ 
       endcase 
     end
   end
@@ -106,16 +115,26 @@ begin
  
         002 : data_read_out[5:0]  <=  reg__sys_cfg__debug_led;                  // Debug led signals
  
-        064 : begin 
-              data_read_out[0:0]  <=  reg__dsp_cfg__bypass_enable;              // Bypass filters on the DSP
-              data_read_out[1:1]  <=  reg__dsp_cfg__dc_filter_enable;           // Bypass DC filter on the DSP
-              data_read_out[2:2]  <=  reg__dsp_cfg__bp_filter_enable;           // Bypass bandpass filter on the DSP
-              data_read_out[3:3]  <=  reg__dsp_cfg__dec_filter_enable;          // Bypass decimation filter on the DSP
-              data_read_out[4:4]  <=  reg__dsp_cfg__pli_filter_enable;          // Bypass PLI filter on the DSP
-              data_read_out[5:5]  <=  reg__dsp_cfg__placeholder1;               // placeholder
-              data_read_out[6:6]  <=  reg__dsp_cfg__placeholder2;               // placeholder
-              data_read_out[7:7]  <=  reg__dsp_cfg__placeholder3;               // placeholder
-              end
+        016 : data_read_out[7:0]  <=  amp_cfg.status;                           // amp status 
+ 
+        017 : data_read_out[7:0]  <=  reg__amp_cfg__cfg;                        // Amp cfg bits
+ 
+        024 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem0;                   // boot mem
+ 
+        025 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem1;                   // boot mem
+ 
+        026 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem2;                   // boot mem
+ 
+        027 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem3;                   // boot mem
+ 
+        028 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem4;                   // boot mem
+ 
+        029 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem5;                   // boot mem
+ 
+        030 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem6;                   // boot mem
+ 
+        031 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem7;                   // boot mem
+ 
       default : data_read_out <= 8'b00000000;
     endcase
   end
@@ -125,12 +144,13 @@ assign sys_cfg.enable_stuf                      = reg__sys_cfg__enable_stuf ;
 assign sys_cfg.enable_other                     = reg__sys_cfg__enable_other ;
 assign sys_cfg.pwm_duty                         = reg__sys_cfg__pwm_duty ;
 assign sys_cfg.debug_led                        = reg__sys_cfg__debug_led ;
-assign dsp_cfg.bypass_enable                    = reg__dsp_cfg__bypass_enable ;
-assign dsp_cfg.dc_filter_enable                 = reg__dsp_cfg__dc_filter_enable ;
-assign dsp_cfg.bp_filter_enable                 = reg__dsp_cfg__bp_filter_enable ;
-assign dsp_cfg.dec_filter_enable                = reg__dsp_cfg__dec_filter_enable ;
-assign dsp_cfg.pli_filter_enable                = reg__dsp_cfg__pli_filter_enable ;
-assign dsp_cfg.placeholder1                     = reg__dsp_cfg__placeholder1 ;
-assign dsp_cfg.placeholder2                     = reg__dsp_cfg__placeholder2 ;
-assign dsp_cfg.placeholder3                     = reg__dsp_cfg__placeholder3 ;
+assign amp_cfg.cfg                              = reg__amp_cfg__cfg ;
+assign amp_cfg.bootmem0                         = reg__amp_cfg__bootmem0 ;
+assign amp_cfg.bootmem1                         = reg__amp_cfg__bootmem1 ;
+assign amp_cfg.bootmem2                         = reg__amp_cfg__bootmem2 ;
+assign amp_cfg.bootmem3                         = reg__amp_cfg__bootmem3 ;
+assign amp_cfg.bootmem4                         = reg__amp_cfg__bootmem4 ;
+assign amp_cfg.bootmem5                         = reg__amp_cfg__bootmem5 ;
+assign amp_cfg.bootmem6                         = reg__amp_cfg__bootmem6 ;
+assign amp_cfg.bootmem7                         = reg__amp_cfg__bootmem7 ;
 endmodule

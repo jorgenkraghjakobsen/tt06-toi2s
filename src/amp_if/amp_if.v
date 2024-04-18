@@ -20,9 +20,6 @@ module amp_if (
     input debug_in
     );  
     
-    //assign amp_i2c_sdao = debug_in; 
-    assign debug_out = 1'b1; 
-    
     wire audio_locked;
     wire send_config;
     wire rx_out_tmp;
@@ -37,7 +34,7 @@ module amp_if (
       .i2s_ws(i2s_ws_tmp),
       .i2s_d0(i2s_d0_tmp),
       .audio_locked(audio_locked),
-      .edgedetect(rx_out_tmp)); 
+      .edgedetect(debug_out)); 
     
    
     assign amp_i2s_d0 = i2s_d0_tmp & amp_nmute;

@@ -67,11 +67,7 @@ module toi2s_tt_fpga (
 	assign amp_i2c_sdai = amp_i2c_sda;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_fpga/toi2s_tt_fpga.sv:41:5
 	assign amp_i2c_sda = (amp_i2c_sdao == 1'b0 ? 1'b0 : 1'bz);
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_fpga/toi2s_tt_fpga.sv:43:5
-	wire rx_in_t;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_fpga/toi2s_tt_fpga.sv:44:5
-	assign rx_in_t = debug_in;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_fpga/toi2s_tt_fpga.sv:46:5
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_fpga/toi2s_tt_fpga.sv:47:5
 	toi2s_tt_top toi2s_tt_top_inst(
 		.clk(clk),
 		.resetb(resetb),
@@ -79,7 +75,7 @@ module toi2s_tt_fpga (
 		.i2c_scl(i2c_scl),
 		.i2c_sdai(i2c_sdai),
 		.i2c_sdao(i2c_sdao),
-		.rx_in(rx_in_t),
+		.rx_in(rx_in),
 		.amp_i2s_bck(amp_i2s_bck),
 		.amp_i2s_ws(amp_i2s_ws),
 		.amp_i2s_d0(amp_i2s_d0),

@@ -97,7 +97,7 @@ end
     end
    end
    
-   always @(state_reg or send_cfg ) 
+   always @(state_reg or i2c_cnt or boot_index or i2c_scl or i2c_sda or send_cfg ) 
    begin
     boot_next <= boot_index;   
     next_reg  <= state_reg;

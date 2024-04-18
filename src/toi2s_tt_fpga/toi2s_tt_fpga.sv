@@ -40,8 +40,9 @@ module toi2s_tt_fpga
     assign amp_i2c_sdai = amp_i2c_sda;
     assign amp_i2c_sda = (amp_i2c_sdao == 1'b0)? 1'b0 : 1'bz;  
     
-    wire rx_in_t;
-    assign rx_in_t = debug_in;
+    //assign amp_i2s_bck = debug_out[5];
+
+
     
     toi2s_tt_top toi2s_tt_top_inst( 
     .clk(clk), 
@@ -54,7 +55,7 @@ module toi2s_tt_fpga
     .i2c_sdao(i2c_sdao),           // bidirectional io handled at higher level
     
     //---SPDIF---------  
-    .rx_in(rx_in_t),              // Audio input spdif blinking ligth  (pin 38) 
+    .rx_in(rx_in),              // Audio input spdif blinking ligth  (pin 38) 
     
     //---AMPLIFIER-----
     .amp_i2s_bck(amp_i2s_bck),            // Clock

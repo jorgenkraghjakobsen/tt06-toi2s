@@ -58,11 +58,11 @@ module toi2s_tt_top (
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:37:5
 	input debug_in;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:40:1
+	wire amp_debug_out;
 	// removed localparam type toi2s_pkg_rb_sys_cfg_wire_t
 	wire [16:0] sys_cfg;
-	assign debug_out = {debug_in, sys_cfg[4:0]};
+	assign debug_out = {amp_debug_out, sys_cfg[4:0]};
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:53:1
-	wire amp_debug_out;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:55:1
 	amp_if amp_if_inst(
 		.clk(clk),

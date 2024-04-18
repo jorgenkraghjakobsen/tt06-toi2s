@@ -4,11 +4,13 @@ sys_cfg.enable_other 0x00 1 1 1 Enable other stuf
 sys_cfg.monitor_flag 0x00 2 1 0 Monitor internal flag
 sys_cfg.pwm_duty 0x01 0 8 133 Counter value for pwm
 sys_cfg.debug_led 0x02 0 6 85 Debug led signals
-dsp_cfg.bypass_enable 0x40 0 1 1 Bypass filters on the DSP
-dsp_cfg.dc_filter_enable 0x40 1 1 1 Bypass DC filter on the DSP
-dsp_cfg.bp_filter_enable 0x40 2 1 1 Bypass bandpass filter on the DSP
-dsp_cfg.dec_filter_enable 0x40 3 1 1 Bypass decimation filter on the DSP
-dsp_cfg.pli_filter_enable 0x40 4 1 1 Bypass PLI filter on the DSP
-dsp_cfg.placeholder1 0x40 5 1 0 placeholder
-dsp_cfg.placeholder2 0x40 6 1 0 placeholder
-dsp_cfg.placeholder3 0x40 7 1 0 placeholder
+amp_cfg.status 0x10 0 8 0 amp status 
+amp_cfg.cfg 0x11 0 8 0 Amp cfg bits
+amp_cfg.bootmem0 0x18 0 8 64 boot mem
+amp_cfg.bootmem1 0x19 0 8 24 boot mem
+amp_cfg.bootmem2 0x1a 0 8 83 boot mem
+amp_cfg.bootmem3 0x1b 0 8 8 boot mem
+amp_cfg.bootmem4 0x1c 0 8 255 boot mem
+amp_cfg.bootmem5 0x1d 0 8 255 boot mem
+amp_cfg.bootmem6 0x1e 0 8 255 boot mem
+amp_cfg.bootmem7 0x1f 0 8 255 boot mem

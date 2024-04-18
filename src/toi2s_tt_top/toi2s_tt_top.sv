@@ -37,7 +37,7 @@ module toi2s_tt_top
     input   debug_in            // Was btn_s2,             // Button 2 input (pin 4)   
     );
     
-assign debug_out = { debug_in, sys_cfg.debug_led[4:0] };
+assign debug_out = { amp_debug_out, sys_cfg.debug_led[4:0] };
 
 //--------------------------------------------------------------------------------------------------------
 // Clock and reset   
