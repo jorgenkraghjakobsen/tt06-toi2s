@@ -32,14 +32,22 @@ src/i2c_if/i2cSlave_define.v \
 src/i2c_if/serialInterface.v \
 src/i2c_if/timescale.v \
 src/rb_toi2s/rb_toi2s.sv \
-src/toi2s_tt_top/toi2s_tt_top.sv \
-src/toi2s_tt_fpga/toi2s_tt_fpga.sv 
+src/toi2s_tt_top/toi2s_tt_top.sv 
+
+#src/toi2s_tt_fpga/toi2s_tt_fpga.sv 
 
 
 SRC = $(addprefix $(WS)/, $(SRC_LIST) )
 SRC_SV = $(filter %.sv ,$(SRC))
 SRC_V  = $(filter %.v ,$(SRC))
 SRC_CONV = $(addsuffix .conv.v,$(SRC_SV))
+
+ttlinter: $(SRC)
+	cd $(WS) ;\
+	verilator -Wall --lint-only --Wno-DECLFILENAME \
+	--top-module toi2s_tt_top \
+	$(SRC_V) $(SRC_CONV) -Wno-fatal --relative-includes > lint.log 
+
 
 register_bank: $(WS)/src/rb_toi2s/register_bank.go
 	cd ../rb_toi2s ;\
