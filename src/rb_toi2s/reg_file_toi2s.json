@@ -98,7 +98,7 @@
       "size"        : "8",
       "reset"       : "64",
       "readonly"    : "0",
-      "description" : "boot mem"
+      "description" : "boot mem0"
     },
     {
       "symbol"      : "amp_cfg.bootmem1",
@@ -107,7 +107,7 @@
       "size"        : "8",
       "reset"       : "72",
       "readonly"    : "0",
-      "description" : "boot mem"
+      "description" : "boot mem1"
     },
     {
       "symbol"      : "amp_cfg.bootmem2",
@@ -116,7 +116,7 @@
       "size"        : "8",
       "reset"       : "53",
       "readonly"    : "0",
-      "description" : "boot mem"
+      "description" : "boot mem2"
     },
     {
       "symbol"      : "amp_cfg.bootmem3",
@@ -125,7 +125,7 @@
       "size"        : "8",
       "reset"       : "8",
       "readonly"    : "0",
-      "description" : "boot mem"
+      "description" : "boot mem3"
     },
     {
       "symbol"      : "amp_cfg.bootmem4",
@@ -134,7 +134,7 @@
       "size"        : "8",
       "reset"       : "255",
       "readonly"    : "0",
-      "description" : "boot mem"
+      "description" : "boot mem4"
     },
     {
       "symbol"      : "amp_cfg.bootmem5",
@@ -143,7 +143,7 @@
       "size"        : "8",
       "reset"       : "255",
       "readonly"    : "0",
-      "description" : "boot mem"
+      "description" : "boot mem5"
     },
     {
       "symbol"      : "amp_cfg.bootmem6",
@@ -152,7 +152,7 @@
       "size"        : "8",
       "reset"       : "255",
       "readonly"    : "0",
-      "description" : "boot mem"
+      "description" : "boot mem6"
     },
     {
       "symbol"      : "amp_cfg.bootmem7",
@@ -161,7 +161,7 @@
       "size"        : "8",
       "reset"       : "255",
       "readonly"    : "0",
-      "description" : "boot mem"
+      "description" : "boot mem7"
     }
   ]
 }

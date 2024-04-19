@@ -21,14 +21,14 @@ typedef struct packed {
 typedef struct packed {
   logic [7:0] status;                          // amp status 
   logic       amp_init;                        // send cfg to amp
-  logic [7:0] bootmem0;                        // boot mem
-  logic [7:0] bootmem1;                        // boot mem
-  logic [7:0] bootmem2;                        // boot mem
-  logic [7:0] bootmem3;                        // boot mem
-  logic [7:0] bootmem4;                        // boot mem
-  logic [7:0] bootmem5;                        // boot mem
-  logic [7:0] bootmem6;                        // boot mem
-  logic [7:0] bootmem7;                        // boot mem
+  logic [7:0] bootmem0;                        // boot mem0
+  logic [7:0] bootmem1;                        // boot mem1
+  logic [7:0] bootmem2;                        // boot mem2
+  logic [7:0] bootmem3;                        // boot mem3
+  logic [7:0] bootmem4;                        // boot mem4
+  logic [7:0] bootmem5;                        // boot mem5
+  logic [7:0] bootmem6;                        // boot mem6
+  logic [7:0] bootmem7;                        // boot mem7
 } rb_amp_cfg_wire_t;
 
 

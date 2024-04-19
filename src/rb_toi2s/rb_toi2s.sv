@@ -34,14 +34,14 @@ reg [7:0]  reg__sys_cfg__spare_2;                                //Spare_reg2
 
     // --- Section: amp_cfg  Offset: 0x0010  Size: 16
 reg        reg__amp_cfg__amp_init;                               //send cfg to amp
-reg [7:0]  reg__amp_cfg__bootmem0;                               //boot mem
-reg [7:0]  reg__amp_cfg__bootmem1;                               //boot mem
-reg [7:0]  reg__amp_cfg__bootmem2;                               //boot mem
-reg [7:0]  reg__amp_cfg__bootmem3;                               //boot mem
-reg [7:0]  reg__amp_cfg__bootmem4;                               //boot mem
-reg [7:0]  reg__amp_cfg__bootmem5;                               //boot mem
-reg [7:0]  reg__amp_cfg__bootmem6;                               //boot mem
-reg [7:0]  reg__amp_cfg__bootmem7;                               //boot mem
+reg [7:0]  reg__amp_cfg__bootmem0;                               //boot mem0
+reg [7:0]  reg__amp_cfg__bootmem1;                               //boot mem1
+reg [7:0]  reg__amp_cfg__bootmem2;                               //boot mem2
+reg [7:0]  reg__amp_cfg__bootmem3;                               //boot mem3
+reg [7:0]  reg__amp_cfg__bootmem4;                               //boot mem4
+reg [7:0]  reg__amp_cfg__bootmem5;                               //boot mem5
+reg [7:0]  reg__amp_cfg__bootmem6;                               //boot mem6
+reg [7:0]  reg__amp_cfg__bootmem7;                               //boot mem7
 
 always_ff @(posedge clk)
 begin
@@ -59,14 +59,14 @@ begin
 
     // --- Section: amp_cfg  Offset: 0x0010  Size: 16
     reg__amp_cfg__amp_init                                <=  1'b00000000;   //send cfg to amp
-    reg__amp_cfg__bootmem0                                <=  8'b01000000;   //boot mem
-    reg__amp_cfg__bootmem1                                <=  8'b01001000;   //boot mem
-    reg__amp_cfg__bootmem2                                <=  8'b00110101;   //boot mem
-    reg__amp_cfg__bootmem3                                <=  8'b00001000;   //boot mem
-    reg__amp_cfg__bootmem4                                <=  8'b11111111;   //boot mem
-    reg__amp_cfg__bootmem5                                <=  8'b11111111;   //boot mem
-    reg__amp_cfg__bootmem6                                <=  8'b11111111;   //boot mem
-    reg__amp_cfg__bootmem7                                <=  8'b11111111;   //boot mem
+    reg__amp_cfg__bootmem0                                <=  8'b01000000;   //boot mem0
+    reg__amp_cfg__bootmem1                                <=  8'b01001000;   //boot mem1
+    reg__amp_cfg__bootmem2                                <=  8'b00110101;   //boot mem2
+    reg__amp_cfg__bootmem3                                <=  8'b00001000;   //boot mem3
+    reg__amp_cfg__bootmem4                                <=  8'b11111111;   //boot mem4
+    reg__amp_cfg__bootmem5                                <=  8'b11111111;   //boot mem5
+    reg__amp_cfg__bootmem6                                <=  8'b11111111;   //boot mem6
+    reg__amp_cfg__bootmem7                                <=  8'b11111111;   //boot mem7
   end
   else
   begin
@@ -89,21 +89,21 @@ begin
  
         017 : reg__amp_cfg__amp_init                            <=   data_write_in[0:0];  // send cfg to amp
  
-        024 : reg__amp_cfg__bootmem0                            <=   data_write_in[7:0];  // boot mem
+        024 : reg__amp_cfg__bootmem0                            <=   data_write_in[7:0];  // boot mem0
  
-        025 : reg__amp_cfg__bootmem1                            <=   data_write_in[7:0];  // boot mem
+        025 : reg__amp_cfg__bootmem1                            <=   data_write_in[7:0];  // boot mem1
  
-        026 : reg__amp_cfg__bootmem2                            <=   data_write_in[7:0];  // boot mem
+        026 : reg__amp_cfg__bootmem2                            <=   data_write_in[7:0];  // boot mem2
  
-        027 : reg__amp_cfg__bootmem3                            <=   data_write_in[7:0];  // boot mem
+        027 : reg__amp_cfg__bootmem3                            <=   data_write_in[7:0];  // boot mem3
  
-        028 : reg__amp_cfg__bootmem4                            <=   data_write_in[7:0];  // boot mem
+        028 : reg__amp_cfg__bootmem4                            <=   data_write_in[7:0];  // boot mem4
  
-        029 : reg__amp_cfg__bootmem5                            <=   data_write_in[7:0];  // boot mem
+        029 : reg__amp_cfg__bootmem5                            <=   data_write_in[7:0];  // boot mem5
  
-        030 : reg__amp_cfg__bootmem6                            <=   data_write_in[7:0];  // boot mem
+        030 : reg__amp_cfg__bootmem6                            <=   data_write_in[7:0];  // boot mem6
  
-        031 : reg__amp_cfg__bootmem7                            <=   data_write_in[7:0];  // boot mem
+        031 : reg__amp_cfg__bootmem7                            <=   data_write_in[7:0];  // boot mem7
  
       endcase 
     end
@@ -137,21 +137,21 @@ begin
  
         017 : data_read_out[0:0]  <=  reg__amp_cfg__amp_init;                   // send cfg to amp
  
-        024 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem0;                   // boot mem
+        024 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem0;                   // boot mem0
  
-        025 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem1;                   // boot mem
+        025 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem1;                   // boot mem1
  
-        026 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem2;                   // boot mem
+        026 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem2;                   // boot mem2
  
-        027 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem3;                   // boot mem
+        027 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem3;                   // boot mem3
  
-        028 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem4;                   // boot mem
+        028 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem4;                   // boot mem4
  
-        029 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem5;                   // boot mem
+        029 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem5;                   // boot mem5
  
-        030 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem6;                   // boot mem
+        030 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem6;                   // boot mem6
  
-        031 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem7;                   // boot mem
+        031 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem7;                   // boot mem7
  
       default : data_read_out <= 8'b00000000;
     endcase

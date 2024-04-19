@@ -59,9 +59,9 @@ func main() {
 		{2, "monitor_flag", 		"sys_cfg", 0, 1, 2, 0, 		true,  "Monitor internal flag", "Long"}, //Read only
 		{3, "pwm_duty",			 	"sys_cfg", 1, 8, 0, 0x85, 	false, "Counter value for pwm", "Long"}, 
 		{4, "debug_led", 			"sys_cfg", 2, 6, 0, 0x51, 	false, "Debug led signals", "Debug led signals"},
-		{4, "spare_0",	 			"sys_cfg", 3, 8, 0, 0x11, 	false, "Spare_reg0", "Debug led signals"},
-		{4, "spare_1",	 			"sys_cfg", 4, 8, 0, 0x22, 	false, "Spare_reg1", "Debug led signals"},
-		{4, "spare_2", 				"sys_cfg", 5, 8, 0, 0x33, 	false, "Spare_reg2", "Debug led signals"},
+		{5, "spare_0",	 			"sys_cfg", 3, 8, 0, 0x11, 	false, "Spare_reg0", "Debug led signals"},
+		{6, "spare_1",	 			"sys_cfg", 4, 8, 0, 0x22, 	false, "Spare_reg1", "Debug led signals"},
+		{7, "spare_2", 				"sys_cfg", 5, 8, 0, 0x33, 	false, "Spare_reg2", "Debug led signals"},
 	  
 
 	}
@@ -72,14 +72,14 @@ func main() {
 	amp_cfg := []Symbol{
 		{0, "status", 				"amp_cfg",  0, 8, 0, 0, 	true,  "amp status ", "Long"},
 		{1, "amp_init",				"amp_cfg",  1, 1, 0, 0, 	false, "send cfg to amp", "Long"},
-		{8, "bootmem0",		 		"amp_cfg",  8, 8, 0, 0x40,  false, "boot mem", "Long"},
-		{9, "bootmem1", 			"amp_cfg",  9, 8, 0, 0x48,	false, "boot mem", "Long"},
-		{10, "bootmem2",	 		"amp_cfg", 10, 8, 0, 0x35,  false, "boot mem", "Long"},
-		{11, "bootmem3", 			"amp_cfg", 11, 8, 0, 0x08,	false, "boot mem", "Long"},
-		{12, "bootmem4",	 		"amp_cfg", 12, 8, 0, 0xff,  false, "boot mem", "Long"},
-		{13, "bootmem5", 			"amp_cfg", 13, 8, 0, 0xff, 	false, "boot mem", "Long"},
-		{14, "bootmem6",	 		"amp_cfg", 14, 8, 0, 0xff,  false, "boot mem", "Long"},
-		{15, "bootmem7", 			"amp_cfg", 15, 8, 0, 0xff, 	false, "boot mem", "Long"},
+		{8, "bootmem0",		 		"amp_cfg",  8, 8, 0, 0x40,  false, "boot mem0", "Long"},
+		{9, "bootmem1", 			"amp_cfg",  9, 8, 0, 0x48,	false, "boot mem1", "Long"},
+		{10, "bootmem2",	 		"amp_cfg", 10, 8, 0, 0x35,  false, "boot mem2", "Long"},
+		{11, "bootmem3", 			"amp_cfg", 11, 8, 0, 0x08,	false, "boot mem3", "Long"},
+		{12, "bootmem4",	 		"amp_cfg", 12, 8, 0, 0xff,  false, "boot mem4", "Long"},
+		{13, "bootmem5", 			"amp_cfg", 13, 8, 0, 0xff, 	false, "boot mem5", "Long"},
+		{14, "bootmem6",	 		"amp_cfg", 14, 8, 0, 0xff,  false, "boot mem6", "Long"},
+		{15, "bootmem7", 			"amp_cfg", 15, 8, 0, 0xff, 	false, "boot mem7", "Long"},
 	}
 
     sec := []Section{

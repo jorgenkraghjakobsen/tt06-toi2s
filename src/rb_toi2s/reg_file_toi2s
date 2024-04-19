@@ -9,11 +9,11 @@ sys_cfg.spare_1 0x04 0 8 34 Spare_reg1
 sys_cfg.spare_2 0x05 0 8 51 Spare_reg2
 amp_cfg.status 0x10 0 8 0 amp status 
 amp_cfg.amp_init 0x11 0 1 0 send cfg to amp
-amp_cfg.bootmem0 0x18 0 8 64 boot mem
-amp_cfg.bootmem1 0x19 0 8 72 boot mem
-amp_cfg.bootmem2 0x1a 0 8 53 boot mem
-amp_cfg.bootmem3 0x1b 0 8 8 boot mem
-amp_cfg.bootmem4 0x1c 0 8 255 boot mem
-amp_cfg.bootmem5 0x1d 0 8 255 boot mem
-amp_cfg.bootmem6 0x1e 0 8 255 boot mem
-amp_cfg.bootmem7 0x1f 0 8 255 boot mem
+amp_cfg.bootmem0 0x18 0 8 64 boot mem0
+amp_cfg.bootmem1 0x19 0 8 72 boot mem1
+amp_cfg.bootmem2 0x1a 0 8 53 boot mem2
+amp_cfg.bootmem3 0x1b 0 8 8 boot mem3
+amp_cfg.bootmem4 0x1c 0 8 255 boot mem4
+amp_cfg.bootmem5 0x1d 0 8 255 boot mem5
+amp_cfg.bootmem6 0x1e 0 8 255 boot mem6
+amp_cfg.bootmem7 0x1f 0 8 255 boot mem7
