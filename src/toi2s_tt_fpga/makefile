@@ -32,9 +32,8 @@ src/i2c_if/i2cSlave_define.v \
 src/i2c_if/serialInterface.v \
 src/i2c_if/timescale.v \
 src/rb_toi2s/rb_toi2s.sv \
-src/toi2s_tt_top/toi2s_tt_top.sv 
-
-#src/toi2s_tt_fpga/toi2s_tt_fpga.sv 
+src/toi2s_tt_top/toi2s_tt_top.sv \
+src/toi2s_tt_fpga/toi2s_tt_fpga.sv 
 
 
 SRC = $(addprefix $(WS)/, $(SRC_LIST) )
