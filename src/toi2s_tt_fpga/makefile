@@ -20,8 +20,8 @@ $(OBJ):
 	mkdir -p $@
 
 SRC_LIST = \
-src/amp_if/amp_if.v \
-src/amp_if/amp_i2c_master.v \
+src/amp_if/amp_if.sv \
+src/amp_if/amp_i2c_master.sv \
 src/amp_if/amp_state_control.v \
 src/amp_if/clk_div.v \
 src/amp_if/timer_simple.v \
@@ -40,6 +40,10 @@ SRC = $(addprefix $(WS)/, $(SRC_LIST) )
 SRC_SV = $(filter %.sv ,$(SRC))
 SRC_V  = $(filter %.v ,$(SRC))
 SRC_CONV = $(addsuffix .conv.v,$(SRC_SV))
+
+register_bank: $(WS)/src/rb_toi2s/register_bank.go
+	cd ../rb_toi2s ;\
+	make 
 
 $(WS)/src/rb_toi2s/rb_toi2s.sv: $(WS)/src/rb_toi2s/register_bank.go 
 	cd ../rb_toi2s ;\
@@ -81,8 +85,12 @@ flash: $(OBJ)/$(PRO).fs
 	openFPGALoader -d /dev/ttyUSB1 -b ${BOARD} -f $(OBJ)/$(PRO).fs
 
 # Load bit stream to device no -f
-load: $(OBJ)/$(PRO).fs
+load_and_build: $(OBJ)/$(PRO).fs
 	sudo openFPGALoader -d /dev/ttyUSB1 -b ${BOARD} $(OBJ)/$(PRO).fs
+
+load: 
+	sudo openFPGALoader -d /dev/ttyUSB1 -b ${BOARD} $(OBJ)/$(PRO).fs
+
 
 clean:
 	rm -rf $(OBJ)

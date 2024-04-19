@@ -3,6 +3,8 @@
 //  Splits an audio single datastream to audio and controllogic 
 //  Written by Jørgen Kragh Jakobsen, November 2021
 
+import toi2s_pkg::*; 
+
 module amp_if (
     input clk,
     input resetb, 
@@ -16,13 +18,18 @@ module amp_if (
     output amp_i2c_scl, 
     output amp_nenable, 
     output amp_nmute,
+    inout rb_amp_cfg_wire_t amp_cfg,
     output debug_out,
     input debug_in
     );  
     
+
     wire audio_locked;
     wire send_config;
     wire rx_out_tmp;
+
+    //assign amp_nenable = amp_cfg.nenable; 
+    assign amp_cfg.status[1:0] = {audio_locked, send_config};  
 
     wire i2s_bck_tmp, i2s_ws_tmp, i2s_d0_tmp; 
     
@@ -56,8 +63,8 @@ module amp_if (
     amp_i2c_master i2c (
         .clk_in(clk),
         .resetb(resetb),
-        //.send_cfg(send_config),
-        .send_cfg(debug_in),
+        .amp_cfg(amp_cfg),
+        .send_cfg(send_config),
         .sdai(amp_i2c_sdai),
         .sdao(amp_i2c_sdao),
         .scl(amp_i2c_scl)

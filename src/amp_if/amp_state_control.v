@@ -5,7 +5,8 @@ module amp_state_control (
     input nerror_in,
     output nenable_out, 
     output nmute_out,
-    output send_config_out);
+    output send_config_out
+  );
   
   wire mute;
   wire enable_delayed; 
@@ -41,14 +42,14 @@ module amp_state_control (
       amp_state_reg = INIT_ST;       
     else 
       case (amp_state_reg) 
-        INIT_ST : // Startup system 
+        INIT_ST: // Startup system 
             amp_state_reg      = ENABLED_0_ST; 
         ENABLED_0_ST: 
             amp_state_reg      = ENABLED_1_ST; 
         ENABLED_1_ST: 
             amp_state_reg      = ENABLED_WAIT_ST; 
         ENABLED_WAIT_ST: 
-            if(timer_timeout) 
+            if (timer_timeout) 
               amp_state_reg   = SEND_CFG_0_ST;
             else 
               amp_state_reg   = ENABLED_WAIT_ST;   
@@ -62,13 +63,13 @@ module amp_state_control (
             else  
               amp_state_reg = SEND_CFG_WAIT_ST; 
         UNMUTE_ST: 
-          amp_state_reg = UNMUTE_ST; 
-        default:
-          amp_state_reg = INIT_ST;   
+             amp_state_reg = UNMUTE_ST; 
+        // default:
+        //   amp_state_reg = INIT_ST;
       endcase      
   end 
 
-  always @(amp_state_reg)
+  always @(*)
   begin  
     case(amp_state_reg) 
       INIT_ST : // Startup system 
@@ -78,14 +79,14 @@ module amp_state_control (
           nenable_reg         = 1'b1;
           timer_start         = 1'b0;
         end
-      ENABLED_0_ST: 
-        begin 
+      ENABLED_0_ST : 
+        begin
          send_config         = 1'b0;  
          send_config_delayed = 1'b0;
          nenable_reg         = 1'b0;
          timer_start         = 1'b1;   
         end 
-      ENABLED_1_ST: 
+      ENABLED_1_ST : 
         begin 
          send_config         = 1'b0;  
          send_config_delayed = 1'b0;
@@ -93,7 +94,7 @@ module amp_state_control (
          timer_start         = 1'b0;   
         end 
       
-      ENABLED_WAIT_ST: 
+      ENABLED_WAIT_ST : 
         begin 
          send_config         = 1'b0;  
          send_config_delayed = 1'b0;
@@ -101,7 +102,7 @@ module amp_state_control (
          timer_start         = 1'b0;   
         end
 
-      SEND_CFG_0_ST:
+      SEND_CFG_0_ST :
         begin
           send_config         = 1'b1;  
           send_config_delayed = 1'b0;
@@ -109,7 +110,7 @@ module amp_state_control (
           timer_start         = 1'b1;
         end
       
-      SEND_CFG_1_ST:
+      SEND_CFG_1_ST :
         begin
           send_config         = 1'b1;  
           send_config_delayed = 1'b0;
@@ -117,7 +118,7 @@ module amp_state_control (
           timer_start         = 1'b0;
         end
       
-      SEND_CFG_WAIT_ST: 
+      SEND_CFG_WAIT_ST : 
         begin
           send_config         = 1'b1;  
           send_config_delayed = 1'b0;
@@ -135,9 +136,9 @@ module amp_state_control (
       
       default:
         begin
-          send_config         = 1'b0;  
-          send_config_delayed = 1'b0;
-          nenable_reg         = 1'b1;
+          send_config         = 1'b1;  
+          send_config_delayed = 1'b1;
+          nenable_reg         = 1'b0;
           timer_start         = 1'b0;
         end
     endcase

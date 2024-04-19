@@ -38,6 +38,7 @@ module toi2s_tt_top
     );
     
 assign debug_out = { amp_debug_out, sys_cfg.debug_led[4:0] };
+//assign amp_nenable = amp_cfg.nenable;
 
 //--------------------------------------------------------------------------------------------------------
 // Clock and reset   
@@ -65,6 +66,7 @@ amp_if amp_if_inst(
     .amp_i2c_scl(amp_i2c_scl),
     .amp_i2c_sdai(amp_i2c_sdai),
     .amp_i2c_sdao(amp_i2c_sdao),
+    .amp_cfg(amp_cfg),
     .debug_out(amp_debug_out),
     .debug_in(debug_in)
     );

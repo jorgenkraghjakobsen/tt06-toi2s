@@ -4,11 +4,11 @@ IO_PORT "amp_nmute" IO_TYPE=LVCMOS33;
 IO_LOC  "amp_nenable" 48;
 IO_PORT "amp_nenable" IO_TYPE=LVCMOS33;
 
-IO_LOC  "amp_i2c_sda" 70;
+IO_LOC  "amp_i2c_sda" 42;
 IO_PORT "amp_i2c_sda" IO_TYPE=LVCMOS33 PULL_MODE=UP;
 
-IO_LOC  "amp_i2c_scl" 71;
-IO_PORT "amp_i2c_scl" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC  "amp_i2c_scl" 41;
+IO_PORT "amp_i2c_scl" IO_TYPE=LVCMOS33;
 
 IO_LOC  "amp_i2s_ws" 76;
 IO_PORT "amp_i2s_ws" IO_TYPE=LVCMOS33;
@@ -19,7 +19,7 @@ IO_PORT "amp_i2s_d0" IO_TYPE=LVCMOS33;
 IO_LOC  "amp_i2s_bck" 73;
 IO_PORT "amp_i2s_bck" IO_TYPE=LVCMOS33;
 
-IO_LOC  "ena" 42;
+IO_LOC  "ena" 69;
 IO_PORT "ena" IO_TYPE=LVCMOS33 PULL_MODE=UP;
 
 IO_LOC  "rx_in" 63;

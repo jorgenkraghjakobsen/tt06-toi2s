@@ -17,7 +17,7 @@ typedef struct packed {
 // Wire interface for amp_cfg
 typedef struct packed {
   logic [7:0] status;                          // amp status 
-  logic [7:0] cfg;                             // Amp cfg bits
+  logic       amp_init;                        // send cfg to amp
   logic [7:0] bootmem0;                        // boot mem
   logic [7:0] bootmem1;                        // boot mem
   logic [7:0] bootmem2;                        // boot mem

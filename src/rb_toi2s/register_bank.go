@@ -58,7 +58,7 @@ func main() {
 		{1, "enable_other", 		"sys_cfg", 0, 1, 1, 1, 		false, "Enable other stuf", "Long"},
 		{2, "monitor_flag", 		"sys_cfg", 0, 1, 2, 0, 		true,  "Monitor internal flag", "Long"}, //Read only
 		{3, "pwm_duty",			 	"sys_cfg", 1, 8, 0, 0x85, 	false, "Counter value for pwm", "Long"}, 
-		{4, "debug_led", 			"sys_cfg", 2, 6, 0, 0x55, 	false, "Debug led signals", "Debug led signals"},
+		{4, "debug_led", 			"sys_cfg", 2, 6, 0, 0x51, 	false, "Debug led signals", "Debug led signals"},
 	}
 
 	//syid, name, 					section, address, size, pos, reset, readonly, shortDescription, longDescription 		 make the rest of the 3 registers for adress 0, and offseet the rest
@@ -66,7 +66,7 @@ func main() {
 
 	amp_cfg := []Symbol{
 		{0, "status", 				"amp_cfg",  0, 8, 0, 0, 	true,  "amp status ", "Long"},
-		{1, "cfg",				 	"amp_cfg",  1, 8, 0, 0, 	false, "Amp cfg bits", "Long"},
+		{1, "amp_init",				"amp_cfg",  1, 1, 0, 0, 	false, "send cfg to amp", "Long"},
 		{8, "bootmem0",		 		"amp_cfg",  8, 8, 0, 0x40,  false, "boot mem", "Long"},
 		{9, "bootmem1", 			"amp_cfg",  9, 8, 0, 0x18,	false, "boot mem", "Long"},
 		{10, "bootmem2",	 		"amp_cfg", 10, 8, 0, 0x53,  false, "boot mem", "Long"},

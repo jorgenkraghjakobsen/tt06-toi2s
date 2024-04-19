@@ -3,9 +3,9 @@ sys_cfg.enable_stuf 0x00 0 1 0 Enable stuf
 sys_cfg.enable_other 0x00 1 1 1 Enable other stuf
 sys_cfg.monitor_flag 0x00 2 1 0 Monitor internal flag
 sys_cfg.pwm_duty 0x01 0 8 133 Counter value for pwm
-sys_cfg.debug_led 0x02 0 6 85 Debug led signals
+sys_cfg.debug_led 0x02 0 6 81 Debug led signals
 amp_cfg.status 0x10 0 8 0 amp status 
-amp_cfg.cfg 0x11 0 8 0 Amp cfg bits
+amp_cfg.amp_init 0x11 0 1 0 send cfg to amp
 amp_cfg.bootmem0 0x18 0 8 64 boot mem
 amp_cfg.bootmem1 0x19 0 8 24 boot mem
 amp_cfg.bootmem2 0x1a 0 8 83 boot mem

@@ -33,7 +33,7 @@ module rb_toi2s (
 	inout wire [16:0] sys_cfg;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:21:2
 	// removed localparam type toi2s_pkg_rb_amp_cfg_wire_t
-	inout wire [79:0] amp_cfg;
+	inout wire [72:0] amp_cfg;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:27:1
 	reg reg__sys_cfg__enable_stuf;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:28:1
@@ -43,7 +43,7 @@ module rb_toi2s (
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:30:1
 	reg [5:0] reg__sys_cfg__debug_led;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:33:1
-	reg [7:0] reg__amp_cfg__cfg;
+	reg reg__amp_cfg__amp_init;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:34:1
 	reg [7:0] reg__amp_cfg__bootmem0;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:35:1
@@ -71,9 +71,9 @@ module rb_toi2s (
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:51:5
 			reg__sys_cfg__pwm_duty <= 8'b10000101;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:52:5
-			reg__sys_cfg__debug_led <= 6'b010101;
+			reg__sys_cfg__debug_led <= 6'b010001;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:55:5
-			reg__amp_cfg__cfg <= 8'b00000000;
+			reg__amp_cfg__amp_init <= 1'b0;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:56:5
 			reg__amp_cfg__bootmem0 <= 8'b01000000;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:57:5
@@ -110,7 +110,7 @@ module rb_toi2s (
 						reg__sys_cfg__debug_led <= data_write_in[5:0];
 					17:
 						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:78:15
-						reg__amp_cfg__cfg <= data_write_in[7:0];
+						reg__amp_cfg__amp_init <= data_write_in[0:0];
 					24:
 						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:80:15
 						reg__amp_cfg__bootmem0 <= data_write_in[7:0];
@@ -163,10 +163,10 @@ module rb_toi2s (
 					data_read_out[5:0] <= reg__sys_cfg__debug_led;
 				16:
 					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:118:15
-					data_read_out[7:0] <= amp_cfg[79-:8];
+					data_read_out[7:0] <= amp_cfg[72-:8];
 				17:
 					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:120:15
-					data_read_out[7:0] <= reg__amp_cfg__cfg;
+					data_read_out[0:0] <= reg__amp_cfg__amp_init;
 				24:
 					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:122:15
 					data_read_out[7:0] <= reg__amp_cfg__bootmem0;
@@ -205,7 +205,7 @@ module rb_toi2s (
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:146:1
 	assign sys_cfg[5-:6] = reg__sys_cfg__debug_led;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:147:1
-	assign amp_cfg[71-:8] = reg__amp_cfg__cfg;
+	assign amp_cfg[64] = reg__amp_cfg__amp_init;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:148:1
 	assign amp_cfg[63-:8] = reg__amp_cfg__bootmem0;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:149:1

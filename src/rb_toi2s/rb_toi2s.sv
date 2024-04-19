@@ -30,7 +30,7 @@ reg [7:0]  reg__sys_cfg__pwm_duty;                               //Counter value
 reg [5:0]  reg__sys_cfg__debug_led;                              //Debug led signals
 
     // --- Section: amp_cfg  Offset: 0x0010  Size: 16
-reg [7:0]  reg__amp_cfg__cfg;                                    //Amp cfg bits
+reg        reg__amp_cfg__amp_init;                               //send cfg to amp
 reg [7:0]  reg__amp_cfg__bootmem0;                               //boot mem
 reg [7:0]  reg__amp_cfg__bootmem1;                               //boot mem
 reg [7:0]  reg__amp_cfg__bootmem2;                               //boot mem
@@ -49,10 +49,10 @@ begin
     reg__sys_cfg__enable_stuf                             <=  1'b00000000;   //Enable stuf
     reg__sys_cfg__enable_other                            <=  1'b00000001;   //Enable other stuf
     reg__sys_cfg__pwm_duty                                <=  8'b10000101;   //Counter value for pwm
-    reg__sys_cfg__debug_led                               <=  6'b01010101;   //Debug led signals
+    reg__sys_cfg__debug_led                               <=  6'b01010001;   //Debug led signals
 
     // --- Section: amp_cfg  Offset: 0x0010  Size: 16
-    reg__amp_cfg__cfg                                     <=  8'b00000000;   //Amp cfg bits
+    reg__amp_cfg__amp_init                                <=  1'b00000000;   //send cfg to amp
     reg__amp_cfg__bootmem0                                <=  8'b01000000;   //boot mem
     reg__amp_cfg__bootmem1                                <=  8'b00011000;   //boot mem
     reg__amp_cfg__bootmem2                                <=  8'b01010011;   //boot mem
@@ -75,7 +75,7 @@ begin
  
         002 : reg__sys_cfg__debug_led                           <=   data_write_in[5:0];  // Debug led signals
  
-        017 : reg__amp_cfg__cfg                                 <=   data_write_in[7:0];  // Amp cfg bits
+        017 : reg__amp_cfg__amp_init                            <=   data_write_in[0:0];  // send cfg to amp
  
         024 : reg__amp_cfg__bootmem0                            <=   data_write_in[7:0];  // boot mem
  
@@ -117,7 +117,7 @@ begin
  
         016 : data_read_out[7:0]  <=  amp_cfg.status;                           // amp status 
  
-        017 : data_read_out[7:0]  <=  reg__amp_cfg__cfg;                        // Amp cfg bits
+        017 : data_read_out[0:0]  <=  reg__amp_cfg__amp_init;                   // send cfg to amp
  
         024 : data_read_out[7:0]  <=  reg__amp_cfg__bootmem0;                   // boot mem
  
@@ -144,7 +144,7 @@ assign sys_cfg.enable_stuf                      = reg__sys_cfg__enable_stuf ;
 assign sys_cfg.enable_other                     = reg__sys_cfg__enable_other ;
 assign sys_cfg.pwm_duty                         = reg__sys_cfg__pwm_duty ;
 assign sys_cfg.debug_led                        = reg__sys_cfg__debug_led ;
-assign amp_cfg.cfg                              = reg__amp_cfg__cfg ;
+assign amp_cfg.amp_init                         = reg__amp_cfg__amp_init ;
 assign amp_cfg.bootmem0                         = reg__amp_cfg__bootmem0 ;
 assign amp_cfg.bootmem1                         = reg__amp_cfg__bootmem1 ;
 assign amp_cfg.bootmem2                         = reg__amp_cfg__bootmem2 ;

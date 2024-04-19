@@ -62,8 +62,10 @@ module toi2s_tt_top (
 	// removed localparam type toi2s_pkg_rb_sys_cfg_wire_t
 	wire [16:0] sys_cfg;
 	assign debug_out = {amp_debug_out, sys_cfg[4:0]};
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:53:1
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:55:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:54:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:56:1
+	// removed localparam type toi2s_pkg_rb_amp_cfg_wire_t
+	wire [72:0] amp_cfg;
 	amp_if amp_if_inst(
 		.clk(clk),
 		.resetb(resetb),
@@ -77,26 +79,25 @@ module toi2s_tt_top (
 		.amp_i2c_scl(amp_i2c_scl),
 		.amp_i2c_sdai(amp_i2c_sdai),
 		.amp_i2c_sdao(amp_i2c_sdao),
+		.amp_cfg(amp_cfg),
 		.debug_out(amp_debug_out),
 		.debug_in(debug_in)
 	);
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:74:1
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:75:1
-	// removed localparam type toi2s_pkg_rb_amp_cfg_wire_t
-	wire [79:0] amp_cfg;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:81:1
-	wire [7:0] rb_address;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:82:1
-	wire [7:0] rb_data_write_to_reg;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:76:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:77:1
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:83:1
-	wire [7:0] rb_data_read_from_reg;
+	wire [7:0] rb_address;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:84:1
-	wire rb_reg_en;
+	wire [7:0] rb_data_write_to_reg;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:85:1
-	wire rb_write_en;
+	wire [7:0] rb_data_read_from_reg;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:86:1
-	wire [1:0] rb_streamSt_mon;
+	wire rb_reg_en;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:87:1
+	wire rb_write_en;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:88:1
+	wire [1:0] rb_streamSt_mon;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:90:1
 	i2c_if i2c_inst(
 		.clk(clk),
 		.resetb(resetb),
@@ -110,7 +111,7 @@ module toi2s_tt_top (
 		.write_en(rb_write_en),
 		.streamSt_mon(rb_streamSt_mon)
 	);
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:104:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:106:1
 	rb_toi2s rb_toi2s_inst(
 		.clk(clk),
 		.resetb(resetb),
@@ -121,7 +122,7 @@ module toi2s_tt_top (
 		.sys_cfg(sys_cfg),
 		.amp_cfg(amp_cfg)
 	);
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:118:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:120:1
 	pwm pwm_inst(
 		.clock_in(clk),
 		.reset(!resetb),

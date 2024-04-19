@@ -1,5 +1,6 @@
 // toI2S tinytapeout fpga wrapper 
 // 
+`default_nettype none
 
 import toi2s_pkg::*; 
 
@@ -38,7 +39,7 @@ module toi2s_tt_fpga
     wire amp_i2c_sdai; 
     wire amp_i2c_sdao;
     assign amp_i2c_sdai = amp_i2c_sda;
-    assign amp_i2c_sda = (amp_i2c_sdao == 1'b0)? 1'b0 : 1'bz;  
+    assign amp_i2c_sda = (amp_i2c_sdao == 1'b0)? amp_i2c_sdao : 1'bz;  
     
     //assign amp_i2s_bck = debug_out[5];
 

@@ -16,18 +16,33 @@
 
 // Written by Jørgen Kragh Jakobsen, IC Works 
 // Copyright 2022
+import toi2s_pkg::*; 
 
 module amp_i2c_master (
     input clk_in,
-    input resetb, 
+    input resetb,
+    inout rb_amp_cfg_wire_t amp_cfg, 
     input send_cfg, 
     input sdai,
     output sdao, 
     output scl); 
 
- 
 
-
+wire [7:0] opcode; 
+always @(*)
+begin
+  case (boot_index) 
+    3'b000: opcode = amp_cfg.bootmem0; 
+    3'b001: opcode = amp_cfg.bootmem1;   // setting 0x30
+    3'b010: opcode = amp_cfg.bootmem2;   // Set Input format   
+    3'b011: opcode = amp_cfg.bootmem3;   // I2S standard
+    3'b100: opcode = amp_cfg.bootmem4;   // Free  
+    3'b101: opcode = amp_cfg.bootmem5;   // Free
+    3'b110: opcode = amp_cfg.bootmem6;   // Free  
+    3'b111: opcode = amp_cfg.bootmem7;   // Free
+  endcase
+end     
+/*
 reg [7:0] bootmem [7:0]; 
 initial begin
     bootmem[0] = 8'h40;           // Set Master volume  
@@ -39,7 +54,7 @@ initial begin
     bootmem[6] = 8'hff;           // Free  
     bootmem[7] = 8'hff;           // Free
 end 
-    
+*/     
    localparam [3:0] 
         INIT_ST                = 0,
         INIT_I2C_ST            = 1,
@@ -75,8 +90,19 @@ end
    wire [6:0] i2c_address; 
    assign i2c_address = 7'b0100000;  
 
-   assign opcode = bootmem[boot_index];  
+   //assign opcode = bootmem[boot_index];  
   
+   assign amp_cfg.status[7:4] = state_reg; 
+   
+   wire resend_cfg;
+   reg resend_cfg_next; 
+   
+   always @(posedge clk) 
+     resend_cfg_next <= amp_cfg.amp_init;
+
+
+   assign resend_cfg = !resend_cfg_next & amp_cfg.amp_init ;
+
    always @(posedge clk) 
     begin
     if (!resetb) 
@@ -89,26 +115,27 @@ end
     end
     else 
     begin 
-      state_reg <= next_reg; 
-      i2c_cnt   <= next_cnt;
+      state_reg  <= next_reg; 
+      i2c_cnt    <= next_cnt;
       boot_index <= boot_next; 
-      i2c_scl  <= i2c_scl_next; 
-      i2c_sda  <= i2c_sda_next; 
+      i2c_scl    <= i2c_scl_next; 
+      i2c_sda    <= i2c_sda_next; 
     end
    end
    
-   always @(state_reg or i2c_cnt or boot_index or i2c_scl or i2c_sda or send_cfg ) 
+   always @(*) 
    begin
-    boot_next <= boot_index;   
+    boot_next <= boot_index;
     next_reg  <= state_reg;
     next_cnt  <= i2c_cnt - 6'b1 ;
     i2c_scl_next  <= i2c_scl;
     i2c_sda_next  <= i2c_sda;
      
     case (state_reg) 
+       
       INIT_ST:
         begin
-            boot_next     <= 3'b0;  
+            boot_next     <= 3'b000;
             i2c_sda_next  <= 1; 
             i2c_scl_next  <= 1;
             next_reg      <=  WAIT_TRIGGER_ST; 
@@ -116,8 +143,8 @@ end
       WAIT_TRIGGER_ST: 
         begin 
             boot_next     <= 3'b0;  
-            i2c_sda_next  <= 0; 
-            i2c_scl_next  <= 0; 
+            i2c_sda_next  <= 1; 
+            i2c_scl_next  <= 1; 
             if (send_cfg) 
                 next_reg  <= LOAD_CMD_ST; 
         end     
@@ -233,7 +260,7 @@ end
       begin
          if (i2c_cnt == 0) 
          begin
-            next_reg     <= LOAD_CMD_ST;
+            next_reg    <= LOAD_CMD_ST;
             boot_next    <= boot_index + 3'b001;
             i2c_sda_next <= 1;
             i2c_scl_next <= 1;
@@ -253,7 +280,9 @@ end
       begin 
         i2c_scl_next <= 1; 
         i2c_sda_next <= 1;
-        next_reg   <=  DONE_ST; 
+        next_reg   <=  DONE_ST;
+        if (resend_cfg) 
+          next_reg <= INIT_ST;  
       end
     endcase
    end

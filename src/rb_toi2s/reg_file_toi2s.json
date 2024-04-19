@@ -42,7 +42,7 @@
       "address"     : "0x02",
       "pos"         : "0",
       "size"        : "6",
-      "reset"       : "85",
+      "reset"       : "81",
       "readonly"    : "0",
       "description" : "Debug led signals"
     },
@@ -56,13 +56,13 @@
       "description" : "amp status "
     },
     {
-      "symbol"      : "amp_cfg.cfg",
+      "symbol"      : "amp_cfg.amp_init",
       "address"     : "0x11",
       "pos"         : "0",
-      "size"        : "8",
+      "size"        : "1",
       "reset"       : "0",
       "readonly"    : "0",
-      "description" : "Amp cfg bits"
+      "description" : "send cfg to amp"
     },
     {
       "symbol"      : "amp_cfg.bootmem0",
