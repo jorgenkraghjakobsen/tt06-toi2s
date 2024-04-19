@@ -32,14 +32,14 @@ wire [7:0] opcode;
 always @(*)
 begin
   case (boot_index) 
-    3'b000: opcode = amp_cfg.bootmem0; 
-    3'b001: opcode = amp_cfg.bootmem1;   // setting 0x30
-    3'b010: opcode = amp_cfg.bootmem2;   // Set Input format   
-    3'b011: opcode = amp_cfg.bootmem3;   // I2S standard
-    3'b100: opcode = amp_cfg.bootmem4;   // Free  
-    3'b101: opcode = amp_cfg.bootmem5;   // Free
-    3'b110: opcode = amp_cfg.bootmem6;   // Free  
-    3'b111: opcode = amp_cfg.bootmem7;   // Free
+    3'b000: opcode <= amp_cfg.bootmem0; 
+    3'b001: opcode <= amp_cfg.bootmem1;   // setting 0x30
+    3'b010: opcode <= amp_cfg.bootmem2;   // Set Input format   
+    3'b011: opcode <= amp_cfg.bootmem3;   // I2S standard
+    3'b100: opcode <= amp_cfg.bootmem4;   // Free  
+    3'b101: opcode <= amp_cfg.bootmem5;   // Free
+    3'b110: opcode <= amp_cfg.bootmem6;   // Free  
+    3'b111: opcode <= amp_cfg.bootmem7;   // Free
   endcase
 end     
 /*
