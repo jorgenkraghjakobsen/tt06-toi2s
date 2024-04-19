@@ -72,11 +72,11 @@ module tt_um_jorgenkraghjakobsen_toi2s (
     
   // Dedicated outputs 
 
-  assign uo_out[0] = amp_nenable;    // nenable
-  assign uo_out[1] = amp_nmute;    // mute 
-  assign uo_out[2] = amp_i2s_bck;    // i2s_bck 
-  assign uo_out[3] = amp_i2s_ws;    // i2s_ws
-  assign uo_out[4] = amp_i2s_d0;    // i2s_d0
+  assign uo_out[0] = amp_i2s_bck; 
+  assign uo_out[1] = amp_i2s_ws;  
+  assign uo_out[2] = amp_i2s_d0; 
+  assign uo_out[3] = amp_nenable; 
+  assign uo_out[4] = amp_nmute;   
   assign uo_out[5] = 1'b0;    // free 
   assign uo_out[6] = 1'b0;    // free 
   assign uo_out[7] = pwm_out; // 

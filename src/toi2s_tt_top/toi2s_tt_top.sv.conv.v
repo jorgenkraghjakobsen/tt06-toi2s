@@ -60,8 +60,8 @@ module toi2s_tt_top (
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:40:1
 	wire amp_debug_out;
 	// removed localparam type toi2s_pkg_rb_sys_cfg_wire_t
-	wire [16:0] sys_cfg;
-	assign debug_out = {amp_debug_out, sys_cfg[4:0]};
+	wire [40:0] sys_cfg;
+	assign debug_out = {amp_debug_out, sys_cfg[28:24]};
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:54:1
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/toi2s_tt_top/toi2s_tt_top.sv:56:1
 	// removed localparam type toi2s_pkg_rb_amp_cfg_wire_t
@@ -126,7 +126,7 @@ module toi2s_tt_top (
 	pwm pwm_inst(
 		.clock_in(clk),
 		.reset(!resetb),
-		.duty_cycle(sys_cfg[13-:8]),
+		.duty_cycle(sys_cfg[37-:8]),
 		.pwm_out(pwm_out)
 	);
 endmodule

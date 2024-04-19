@@ -47,6 +47,33 @@
       "description" : "Debug led signals"
     },
     {
+      "symbol"      : "sys_cfg.spare_0",
+      "address"     : "0x03",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "17",
+      "readonly"    : "0",
+      "description" : "Spare_reg0"
+    },
+    {
+      "symbol"      : "sys_cfg.spare_1",
+      "address"     : "0x04",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "34",
+      "readonly"    : "0",
+      "description" : "Spare_reg1"
+    },
+    {
+      "symbol"      : "sys_cfg.spare_2",
+      "address"     : "0x05",
+      "pos"         : "0",
+      "size"        : "8",
+      "reset"       : "51",
+      "readonly"    : "0",
+      "description" : "Spare_reg2"
+    },
+    {
       "symbol"      : "amp_cfg.status",
       "address"     : "0x10",
       "pos"         : "0",

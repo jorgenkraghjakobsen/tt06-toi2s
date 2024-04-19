@@ -28,6 +28,9 @@ reg        reg__sys_cfg__enable_stuf;                            //Enable stuf
 reg        reg__sys_cfg__enable_other;                           //Enable other stuf
 reg [7:0]  reg__sys_cfg__pwm_duty;                               //Counter value for pwm
 reg [5:0]  reg__sys_cfg__debug_led;                              //Debug led signals
+reg [7:0]  reg__sys_cfg__spare_0;                                //Spare_reg0
+reg [7:0]  reg__sys_cfg__spare_1;                                //Spare_reg1
+reg [7:0]  reg__sys_cfg__spare_2;                                //Spare_reg2
 
     // --- Section: amp_cfg  Offset: 0x0010  Size: 16
 reg        reg__amp_cfg__amp_init;                               //send cfg to amp
@@ -50,6 +53,9 @@ begin
     reg__sys_cfg__enable_other                            <=  1'b00000001;   //Enable other stuf
     reg__sys_cfg__pwm_duty                                <=  8'b10000101;   //Counter value for pwm
     reg__sys_cfg__debug_led                               <=  6'b01010001;   //Debug led signals
+    reg__sys_cfg__spare_0                                 <=  8'b00010001;   //Spare_reg0
+    reg__sys_cfg__spare_1                                 <=  8'b00100010;   //Spare_reg1
+    reg__sys_cfg__spare_2                                 <=  8'b00110011;   //Spare_reg2
 
     // --- Section: amp_cfg  Offset: 0x0010  Size: 16
     reg__amp_cfg__amp_init                                <=  1'b00000000;   //send cfg to amp
@@ -74,6 +80,12 @@ begin
         001 : reg__sys_cfg__pwm_duty                            <=   data_write_in[7:0];  // Counter value for pwm
  
         002 : reg__sys_cfg__debug_led                           <=   data_write_in[5:0];  // Debug led signals
+ 
+        003 : reg__sys_cfg__spare_0                             <=   data_write_in[7:0];  // Spare_reg0
+ 
+        004 : reg__sys_cfg__spare_1                             <=   data_write_in[7:0];  // Spare_reg1
+ 
+        005 : reg__sys_cfg__spare_2                             <=   data_write_in[7:0];  // Spare_reg2
  
         017 : reg__amp_cfg__amp_init                            <=   data_write_in[0:0];  // send cfg to amp
  
@@ -115,6 +127,12 @@ begin
  
         002 : data_read_out[5:0]  <=  reg__sys_cfg__debug_led;                  // Debug led signals
  
+        003 : data_read_out[7:0]  <=  reg__sys_cfg__spare_0;                    // Spare_reg0
+ 
+        004 : data_read_out[7:0]  <=  reg__sys_cfg__spare_1;                    // Spare_reg1
+ 
+        005 : data_read_out[7:0]  <=  reg__sys_cfg__spare_2;                    // Spare_reg2
+ 
         016 : data_read_out[7:0]  <=  amp_cfg.status;                           // amp status 
  
         017 : data_read_out[0:0]  <=  reg__amp_cfg__amp_init;                   // send cfg to amp
@@ -144,6 +162,9 @@ assign sys_cfg.enable_stuf                      = reg__sys_cfg__enable_stuf ;
 assign sys_cfg.enable_other                     = reg__sys_cfg__enable_other ;
 assign sys_cfg.pwm_duty                         = reg__sys_cfg__pwm_duty ;
 assign sys_cfg.debug_led                        = reg__sys_cfg__debug_led ;
+assign sys_cfg.spare_0                          = reg__sys_cfg__spare_0 ;
+assign sys_cfg.spare_1                          = reg__sys_cfg__spare_1 ;
+assign sys_cfg.spare_2                          = reg__sys_cfg__spare_2 ;
 assign amp_cfg.amp_init                         = reg__amp_cfg__amp_init ;
 assign amp_cfg.bootmem0                         = reg__amp_cfg__bootmem0 ;
 assign amp_cfg.bootmem1                         = reg__amp_cfg__bootmem1 ;

@@ -30,7 +30,7 @@ module rb_toi2s (
 	input wire write_en;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:20:2
 	// removed localparam type toi2s_pkg_rb_sys_cfg_wire_t
-	inout wire [16:0] sys_cfg;
+	inout wire [40:0] sys_cfg;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:21:2
 	// removed localparam type toi2s_pkg_rb_amp_cfg_wire_t
 	inout wire [72:0] amp_cfg;
@@ -42,184 +42,220 @@ module rb_toi2s (
 	reg [7:0] reg__sys_cfg__pwm_duty;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:30:1
 	reg [5:0] reg__sys_cfg__debug_led;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:31:1
+	reg [7:0] reg__sys_cfg__spare_0;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:32:1
+	reg [7:0] reg__sys_cfg__spare_1;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:33:1
-	reg reg__amp_cfg__amp_init;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:34:1
-	reg [7:0] reg__amp_cfg__bootmem0;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:35:1
-	reg [7:0] reg__amp_cfg__bootmem1;
+	reg [7:0] reg__sys_cfg__spare_2;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:36:1
-	reg [7:0] reg__amp_cfg__bootmem2;
+	reg reg__amp_cfg__amp_init;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:37:1
-	reg [7:0] reg__amp_cfg__bootmem3;
+	reg [7:0] reg__amp_cfg__bootmem0;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:38:1
-	reg [7:0] reg__amp_cfg__bootmem4;
+	reg [7:0] reg__amp_cfg__bootmem1;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:39:1
-	reg [7:0] reg__amp_cfg__bootmem5;
+	reg [7:0] reg__amp_cfg__bootmem2;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:40:1
-	reg [7:0] reg__amp_cfg__bootmem6;
+	reg [7:0] reg__amp_cfg__bootmem3;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:41:1
-	reg [7:0] reg__amp_cfg__bootmem7;
+	reg [7:0] reg__amp_cfg__bootmem4;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:42:1
+	reg [7:0] reg__amp_cfg__bootmem5;
 	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:43:1
+	reg [7:0] reg__amp_cfg__bootmem6;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:44:1
+	reg [7:0] reg__amp_cfg__bootmem7;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:46:1
 	always @(posedge clk)
-		// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:45:3
+		// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:48:3
 		if (resetb == 0) begin
-			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:49:5
-			reg__sys_cfg__enable_stuf <= 1'b0;
-			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:50:5
-			reg__sys_cfg__enable_other <= 1'b1;
-			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:51:5
-			reg__sys_cfg__pwm_duty <= 8'b10000101;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:52:5
-			reg__sys_cfg__debug_led <= 6'b010001;
+			reg__sys_cfg__enable_stuf <= 1'b0;
+			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:53:5
+			reg__sys_cfg__enable_other <= 1'b1;
+			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:54:5
+			reg__sys_cfg__pwm_duty <= 8'b10000101;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:55:5
-			reg__amp_cfg__amp_init <= 1'b0;
+			reg__sys_cfg__debug_led <= 6'b010001;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:56:5
-			reg__amp_cfg__bootmem0 <= 8'b01000000;
+			reg__sys_cfg__spare_0 <= 8'b00010001;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:57:5
-			reg__amp_cfg__bootmem1 <= 8'b01001000;
+			reg__sys_cfg__spare_1 <= 8'b00100010;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:58:5
-			reg__amp_cfg__bootmem2 <= 8'b00110101;
-			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:59:5
-			reg__amp_cfg__bootmem3 <= 8'b00001000;
-			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:60:5
-			reg__amp_cfg__bootmem4 <= 8'b11111111;
+			reg__sys_cfg__spare_2 <= 8'b00110011;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:61:5
-			reg__amp_cfg__bootmem5 <= 8'b11111111;
+			reg__amp_cfg__amp_init <= 1'b0;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:62:5
-			reg__amp_cfg__bootmem6 <= 8'b11111111;
+			reg__amp_cfg__bootmem0 <= 8'b01000000;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:63:5
+			reg__amp_cfg__bootmem1 <= 8'b01001000;
+			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:64:5
+			reg__amp_cfg__bootmem2 <= 8'b00110101;
+			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:65:5
+			reg__amp_cfg__bootmem3 <= 8'b00001000;
+			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:66:5
+			reg__amp_cfg__bootmem4 <= 8'b11111111;
+			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:67:5
+			reg__amp_cfg__bootmem5 <= 8'b11111111;
+			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:68:5
+			reg__amp_cfg__bootmem6 <= 8'b11111111;
+			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:69:5
 			reg__amp_cfg__bootmem7 <= 8'b11111111;
 		end
 		else
-			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:67:5
+			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:73:5
 			if (write_en)
-				// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:69:7
+				// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:75:7
 				case (address)
 					0: begin
-						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:71:15
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:77:15
 						reg__sys_cfg__enable_stuf <= data_write_in[0:0];
-						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:72:15
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:78:15
 						reg__sys_cfg__enable_other <= data_write_in[1:1];
 					end
 					1:
-						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:74:15
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:80:15
 						reg__sys_cfg__pwm_duty <= data_write_in[7:0];
 					2:
-						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:76:15
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:82:15
 						reg__sys_cfg__debug_led <= data_write_in[5:0];
+					3:
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:84:15
+						reg__sys_cfg__spare_0 <= data_write_in[7:0];
+					4:
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:86:15
+						reg__sys_cfg__spare_1 <= data_write_in[7:0];
+					5:
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:88:15
+						reg__sys_cfg__spare_2 <= data_write_in[7:0];
 					17:
-						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:78:15
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:90:15
 						reg__amp_cfg__amp_init <= data_write_in[0:0];
 					24:
-						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:80:15
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:92:15
 						reg__amp_cfg__bootmem0 <= data_write_in[7:0];
 					25:
-						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:82:15
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:94:15
 						reg__amp_cfg__bootmem1 <= data_write_in[7:0];
 					26:
-						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:84:15
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:96:15
 						reg__amp_cfg__bootmem2 <= data_write_in[7:0];
 					27:
-						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:86:15
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:98:15
 						reg__amp_cfg__bootmem3 <= data_write_in[7:0];
 					28:
-						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:88:15
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:100:15
 						reg__amp_cfg__bootmem4 <= data_write_in[7:0];
 					29:
-						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:90:15
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:102:15
 						reg__amp_cfg__bootmem5 <= data_write_in[7:0];
 					30:
-						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:92:15
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:104:15
 						reg__amp_cfg__bootmem6 <= data_write_in[7:0];
 					31:
-						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:94:15
+						// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:106:15
 						reg__amp_cfg__bootmem7 <= data_write_in[7:0];
 				endcase
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:101:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:113:1
 	always @(posedge clk)
-		// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:103:3
+		// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:115:3
 		if (resetb == 0)
-			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:104:5
+			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:116:5
 			data_read_out <= 8'b00000000;
 		else begin
-			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:107:5
+			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:119:5
 			data_read_out <= 8'b00000000;
-			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:108:5
+			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:120:5
 			case (address)
 				0: begin
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:110:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:122:15
 					data_read_out[0:0] <= reg__sys_cfg__enable_stuf;
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:111:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:123:15
 					data_read_out[1:1] <= reg__sys_cfg__enable_other;
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:112:15
-					data_read_out[2:2] <= sys_cfg[14];
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:124:15
+					data_read_out[2:2] <= sys_cfg[38];
 				end
 				1:
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:114:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:126:15
 					data_read_out[7:0] <= reg__sys_cfg__pwm_duty;
 				2:
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:116:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:128:15
 					data_read_out[5:0] <= reg__sys_cfg__debug_led;
+				3:
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:130:15
+					data_read_out[7:0] <= reg__sys_cfg__spare_0;
+				4:
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:132:15
+					data_read_out[7:0] <= reg__sys_cfg__spare_1;
+				5:
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:134:15
+					data_read_out[7:0] <= reg__sys_cfg__spare_2;
 				16:
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:118:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:136:15
 					data_read_out[7:0] <= amp_cfg[72-:8];
 				17:
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:120:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:138:15
 					data_read_out[0:0] <= reg__amp_cfg__amp_init;
 				24:
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:122:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:140:15
 					data_read_out[7:0] <= reg__amp_cfg__bootmem0;
 				25:
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:124:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:142:15
 					data_read_out[7:0] <= reg__amp_cfg__bootmem1;
 				26:
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:126:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:144:15
 					data_read_out[7:0] <= reg__amp_cfg__bootmem2;
 				27:
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:128:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:146:15
 					data_read_out[7:0] <= reg__amp_cfg__bootmem3;
 				28:
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:130:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:148:15
 					data_read_out[7:0] <= reg__amp_cfg__bootmem4;
 				29:
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:132:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:150:15
 					data_read_out[7:0] <= reg__amp_cfg__bootmem5;
 				30:
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:134:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:152:15
 					data_read_out[7:0] <= reg__amp_cfg__bootmem6;
 				31:
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:136:15
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:154:15
 					data_read_out[7:0] <= reg__amp_cfg__bootmem7;
 				default:
-					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:138:17
+					// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:156:17
 					data_read_out <= 8'b00000000;
 			endcase
 		end
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:143:1
-	assign sys_cfg[16] = reg__sys_cfg__enable_stuf;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:144:1
-	assign sys_cfg[15] = reg__sys_cfg__enable_other;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:145:1
-	assign sys_cfg[13-:8] = reg__sys_cfg__pwm_duty;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:146:1
-	assign sys_cfg[5-:6] = reg__sys_cfg__debug_led;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:147:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:161:1
+	assign sys_cfg[40] = reg__sys_cfg__enable_stuf;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:162:1
+	assign sys_cfg[39] = reg__sys_cfg__enable_other;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:163:1
+	assign sys_cfg[37-:8] = reg__sys_cfg__pwm_duty;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:164:1
+	assign sys_cfg[29-:6] = reg__sys_cfg__debug_led;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:165:1
+	assign sys_cfg[23-:8] = reg__sys_cfg__spare_0;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:166:1
+	assign sys_cfg[15-:8] = reg__sys_cfg__spare_1;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:167:1
+	assign sys_cfg[7-:8] = reg__sys_cfg__spare_2;
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:168:1
 	assign amp_cfg[64] = reg__amp_cfg__amp_init;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:148:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:169:1
 	assign amp_cfg[63-:8] = reg__amp_cfg__bootmem0;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:149:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:170:1
 	assign amp_cfg[55-:8] = reg__amp_cfg__bootmem1;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:150:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:171:1
 	assign amp_cfg[47-:8] = reg__amp_cfg__bootmem2;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:151:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:172:1
 	assign amp_cfg[39-:8] = reg__amp_cfg__bootmem3;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:152:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:173:1
 	assign amp_cfg[31-:8] = reg__amp_cfg__bootmem4;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:153:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:174:1
 	assign amp_cfg[23-:8] = reg__amp_cfg__bootmem5;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:154:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:175:1
 	assign amp_cfg[15-:8] = reg__amp_cfg__bootmem6;
-	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:155:1
+	// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:176:1
 	assign amp_cfg[7-:8] = reg__amp_cfg__bootmem7;
 endmodule
