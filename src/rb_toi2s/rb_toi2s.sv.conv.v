@@ -77,9 +77,9 @@ module rb_toi2s (
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:56:5
 			reg__amp_cfg__bootmem0 <= 8'b01000000;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:57:5
-			reg__amp_cfg__bootmem1 <= 8'b00011000;
+			reg__amp_cfg__bootmem1 <= 8'b01001000;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:58:5
-			reg__amp_cfg__bootmem2 <= 8'b01010011;
+			reg__amp_cfg__bootmem2 <= 8'b00110101;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:59:5
 			reg__amp_cfg__bootmem3 <= 8'b00001000;
 			// Trace: /home/jakobsen/work/asic/workspace/tt06-toi2s/src/rb_toi2s/rb_toi2s.sv:60:5

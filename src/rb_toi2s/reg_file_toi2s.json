@@ -78,7 +78,7 @@
       "address"     : "0x19",
       "pos"         : "0",
       "size"        : "8",
-      "reset"       : "24",
+      "reset"       : "72",
       "readonly"    : "0",
       "description" : "boot mem"
     },
@@ -87,7 +87,7 @@
       "address"     : "0x1a",
       "pos"         : "0",
       "size"        : "8",
-      "reset"       : "83",
+      "reset"       : "53",
       "readonly"    : "0",
       "description" : "boot mem"
     },

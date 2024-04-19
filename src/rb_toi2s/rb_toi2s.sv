@@ -54,8 +54,8 @@ begin
     // --- Section: amp_cfg  Offset: 0x0010  Size: 16
     reg__amp_cfg__amp_init                                <=  1'b00000000;   //send cfg to amp
     reg__amp_cfg__bootmem0                                <=  8'b01000000;   //boot mem
-    reg__amp_cfg__bootmem1                                <=  8'b00011000;   //boot mem
-    reg__amp_cfg__bootmem2                                <=  8'b01010011;   //boot mem
+    reg__amp_cfg__bootmem1                                <=  8'b01001000;   //boot mem
+    reg__amp_cfg__bootmem2                                <=  8'b00110101;   //boot mem
     reg__amp_cfg__bootmem3                                <=  8'b00001000;   //boot mem
     reg__amp_cfg__bootmem4                                <=  8'b11111111;   //boot mem
     reg__amp_cfg__bootmem5                                <=  8'b11111111;   //boot mem

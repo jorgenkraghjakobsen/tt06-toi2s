@@ -47,7 +47,7 @@
     reg phase_reg;
     reg ws_old_reg;
     reg i2s_ws_reg;
-    localparam  bckclks=8; //17;
+    localparam  bckclks=4; //17;
     
     always @(posedge clk)
     begin
@@ -67,7 +67,7 @@
       begin
         if (rxedge == 1)
         begin
-          bitvalue         <= correlator[3];
+          bitvalue         <= correlator[1];
           bitlength        <= bitcnt;
           bitcnt           <= 8'h00;
           bitedge_detected <= 1'b1;
@@ -75,8 +75,8 @@
           begin
             ws_old_reg       <= i2s_ws_reg;
             bckcnt           <= 8'h00;
-            if (((bckcnt > 2*bckclks+8) & (bckcnt < 3*bckclks+8) & (bckcnt!=bitcnt)) |
-                ((bckcnt > 4*bckclks+8) & (bckcnt < 5*bckclks+8)))
+            if (((bckcnt > 9+1) & (bckcnt < 14+1) & (bckcnt!=bitcnt)) |
+                ((bckcnt > 19+1) & (bckcnt < 25+1)))
               phase_reg <= !phase_reg;
             /*if (ws_old_reg == 1'b1 & i2s_ws_reg == 1'b0)
             begin 
@@ -124,7 +124,7 @@
         i2s_bck_next = i2s_bck_reg;  
     end
     
-    assign i2s_bck = i2s_bck_reg;
+    assign i2s_bck = !i2s_bck_reg;
     // Bucket list - Update a table of stats on bit lengths
     /*
     reg [7:0] bucket_mem [31:0];
@@ -185,6 +185,7 @@
     reg i2s_d0_reg, i2s_d0_next;
   
     assign i2s_ws    = i2s_ws_reg;
+    
     assign i2s_d0    = i2s_d0_reg;
   
     always @(posedge clk)
@@ -209,9 +210,9 @@
       end
     end
   
-    localparam [7:0] T3 = 22; //42; //32; //42;
-    localparam [7:0] T2 = 20; //38; //30; //38;
-    localparam [7:0] T1 = 10; //20;  //16; //20;
+    localparam [7:0] T3 = 12; //42; //32; //42;
+    localparam [7:0] T2 = 10; //38; //30; //38;
+    localparam [7:0] T1 = 4; //20;  //16; //20;
   
     always @*
     begin
