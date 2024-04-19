@@ -15,8 +15,8 @@ project:
   
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
   source_files:
-    - "amp_if/amp_if.v"
-    - "amp_if/amp_i2c_master.v"
+    - "amp_if/amp_if.sv.conv.v"
+    - "amp_if/amp_i2c_master.sv.conv.v"
     - "amp_if/amp_state_control.v"
     - "amp_if/clk_div.v"
     - "amp_if/timer_simple.v"
